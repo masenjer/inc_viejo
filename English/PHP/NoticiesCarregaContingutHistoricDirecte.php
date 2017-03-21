@@ -1,0 +1,67 @@
+<?php
+include("rao/sas_con.php");
+
+session_start();
+
+$resultado = '<table width="100%" cellpadding="0" cellspacing="0" border="0">';
+
+$today = trim(date("Y-m-d"));
+
+//$SQL = "SELECT * FROM Noticias WHERE FechaPub <= '$today' and FechaDesPub > '$today' ORDER BY IdNoticia DESC";
+
+$SQL = "SELECT * FROM Noticias WHERE IdSite = ".$_SESSION["IdSite"]." AND Rang is NOT NULL ORDER BY Rang ASC";
+$result = mysql_query($SQL,$oConn);
+
+$i=0;
+
+$primera = true;
+
+while ($row = mysql_fetch_array($result))
+{
+//	if (CompruebaSiPublicado($row["FechaPub"],$row["FechaDesPub"]) == 1)
+//	{
+	if (!$primera)
+	{
+		$i%=2;
+		
+		if ($row["NOU"] == "1") $NOU = '<img src="img/NOU.gif" style="padding-left:10px" />';
+		else $NOU = "";
+		
+		$obre = "";
+		$tanca = "";
+		$padding = "";
+		
+		if ($i==0) $obre = '<tr valign="top">';
+		else
+		{
+			$tanca = '</tr>';
+			$padding = ' padding-left:20px; ';
+		}
+		
+		$resultado = $resultado . $obre . '
+				<td style="padding-top:30px; padding-bottom:20px; border-top:1px #ddd solid; '.$padding.'" width="50%">
+					<table  cellpadding="0" cellspacing="0" border="0">
+						<tr>
+							<td class="fuenteTitolContingut"><b>'.Quita($row["Titol"]).'</b>'.$NOU.'</td>
+						</tr>
+						<tr>
+							<td class="LinNoticia"><em>['.SelectFecha($row["FechaNot"]).']</em></td>
+						</tr>
+						<tr>
+							<td class="LinNoticia">'.Quita($row["Cos"]).'</td>
+						</tr>					
+					</table>
+				</td>'.$tanca;	
+		
+		$i++;	
+	
+	}
+	else $primera = false;
+}
+
+mysql_close($oConn);
+
+$resultado = $resultado . '</table>';
+
+echo $resultado;
+?>
