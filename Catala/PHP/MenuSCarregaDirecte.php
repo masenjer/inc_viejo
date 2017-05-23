@@ -10,15 +10,6 @@ $cuenta = 1;
 $SQL = "SELECT * FROM CapMenu WHERE IdSite = ".$_SESSION["IdSite"]." order by Orden";
 $result = mysql_query($SQL,$oConn);
 
-$resultado = '
-<table width="100%" cellpadding="0" cellspacing="0" border="0" class="FonsMenuSupInterButtonGris">
-<tr>
-<td>
-<table  id="FonsMenuSupInterButtonGris" cellpadding="0" cellspacing="0" border="0">
-	<tr valign="middle">
-		<td width="12px"></td>
-		<td id="RayaGris" width="1px">
-			';
 
 while ($row = mysql_fetch_array($result))
 {
@@ -43,40 +34,40 @@ if (!$direccion) $direccion = 'index.php#!/MS_'.$row["IdCapMenu"];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	$resultado = $resultado . '
+	echo  '
 	
-		<td>
+		<li class="dropdown">
 			<input type="hidden" id="tdMSAntic'.$row["IdCapMenu"].'" value="'.$row["Titol"].'">
-		</td>';
+		';
 		
-	$resultado = $resultado . '  
-		<td id="tdMS'.$row["IdCapMenu"].'"  align="left">
+	echo  '  
+		
 			
 			<a href="'.$direccion.'">
-				<button class="ButtonMS"><div id="DIVTitolMS'.$row["IdCapMenu"].'" class="DIVMenuS">'.$row["Titol"].'</div></button>
+				'.$row["Titol"].'
 			</a>
 			
 			
-		</td>';	
+		';	
 		
 	if ($_SESSION["Creacio"]=="1")
 	{
-		$resultado = $resultado . '<td style="vertical-align:middle;"> 
-			<table height="32px" cellpadding="0" cellspacing="0" border="0" >
-				<tr>
-					<td height="17px" valign="top"><button class="EditButton" onClick="EditaTitolMS('.$row["IdCapMenu"].')"/></td>
-					<td rowspan="2">
-						<input class="OrdenML" type="text"  id="OrdenMS'.$row["IdCapMenu"].'" value="'.$row["Orden"].'"  style="vertical-align:bottom" onKeyPress="submitenter(6,event,'.$row["IdCapMenu"].')"></td>						
-				</tr>
-				<tr>
-					<td><button class="LinMenuDeleteButton" onClick="MostraEliminaTOT(0,'.$row["IdCapMenu"].');" style="vertical-align:top"/></td>
-				</tr>
-			</table>
-		</td>
+		echo  '
+			<div class="row">
+				<div class="col-md-2">
+					<button class="EditButton" onClick="EditaTitolLPage('.$row["IdLinMenu"].')"/>			
+				</div>
+				
+				<div class="col-md-2">	<input class="OrdenML" type="text"  id="OrdenME'.$row["IdLinMenu"].'" value="'.$row["Orden"].'"  onKeyPress="submitenter(5,event,'.$row["IdLinMenu"].');" >
+				</div>
+				<div class="col-md-2">
+					<button class="LinMenuDeleteButton" onClick="MostraEliminaTOT(1,'.$idCap.','.$row["IdLinMenu"].');"/>
+				</div>
+			</div>
 	';
 	}
 	
-	$resultado.= '		<td width="2px"></td>';
+	echo '		</li>';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /* 
@@ -92,7 +83,7 @@ if (!$direccion) $direccion = 'index.php#!/MS_'.$row["IdCapMenu"];
 		$stilo = 'style="background-image:URL(img/CapcaRelleu2.png);"';	
 	}
 
-	$resultado = $resultado . '
+	echo  '
 		<td bgcolor="#333333" class="ButtonMS" '.$stilo.'  height="28px" id="tdMS'.$row["IdCapMenu"].'"  align="left">
 			<a href="index.php#!/MS_'.$row["IdCapMenu"].'" '.$DobleClic.'>
 			<input type="hidden" id="tdMSAntic'.$row["IdCapMenu"].'" value="'.$row["Titol"].'">
@@ -107,25 +98,22 @@ if (!$direccion) $direccion = 'index.php#!/MS_'.$row["IdCapMenu"];
 
 mysql_close($oConn);
 
-
+echo  '
+		<li>
+			<a href="Directori.php">
+			Directori INc
+			</a>
+		</li>';
 
 
 		
-		///Botó del directori	
-		$resultado = $resultado . '
-		<td  align="left">
-			<a href="Directori.php">
-			<button class="ButtonMS">Directori INc</button>
-			</a>
-		</td>
-		<td width="2px"></td>
+		
 
-';
 
 
 
 /*///Botó del publicacions	
-		$resultado = $resultado . '
+		echo  '
 		<td bgcolor="#333333" class="ButtonMS" '.$stilo.'  height="28px" id="tdMSPublicacions" onClick="MostraPublicacions();" align="left">
 			<div id="DIVTitolMSPublicacions" class="DIVMenuS">Publicacions</div>
 		</td>
@@ -136,40 +124,29 @@ mysql_close($oConn);
 
 /////////////////////////////////////////////////////Boton nou MS i GU
 
-$resultado = $resultado . 
-			'<td width="12px" style="padding-right:2px">
-					<table cellpadding="0" cellspacing="0" border="0">';
+
 
 		
 if ($_SESSION["Creacio"]=="1")
 {
-	$resultado .= 	'
-		<tr>	
-			<td colspan="2" align="right">
-				<button class="PlusButton" onclick="NovaMS();"/>
-			</td>
-		</tr>			';
+	echo 	'
+		<button class="PlusButton" onclick="NovaMS();"/>';
 }
 
 if ($_SESSION["Usuarios"]=="1")
 {
-	$resultado .= 	'
-		<tr>    	
-			<td><button class="GUButton" onclick="MostraGestioGU();"/> </td>
-		</tr>';
+	echo 	'<button class="GUButton" onclick="MostraGestioGU();"/>';
 }
 
-$resultado .= '</table>
+echo '</table>
 			</td>';
 
 	
 			
-		$resultado .= '
+		echo '
 		</tr>
 	</table>
-	</td>
-	</tr>
-	</table>
+
 	
 	<input type="hidden" id="CuentaMS" value="'.$cuenta.'">';
 	
@@ -177,5 +154,5 @@ $resultado .= '</table>
 /////////////////////////////////////////////////////Boton nou MS i GU	
 
 
-echo $resultado;
+
 ?>

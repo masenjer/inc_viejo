@@ -10,15 +10,6 @@ $cuenta = 1;
 $SQL = "SELECT * FROM CapMenu WHERE IdSite = ".$_SESSION["IdSite"]." order by Orden";
 $result = mysql_query($SQL,$oConn);
 
-$resultado = '
-<table width="100%" cellpadding="0" cellspacing="0" border="0" class="FonsMenuSupInterButtonGris">
-<tr>
-<td>
-<table  id="FonsMenuSupInterButtonGris" cellpadding="0" cellspacing="0" border="0">
-	<tr valign="middle">
-		<td width="12px"></td>
-		<td id="RayaGris" width="1px">
-			';
 
 while ($row = mysql_fetch_array($result))
 {
@@ -38,26 +29,26 @@ while ($row2 = mysql_fetch_array($result2))
 }
 
 if (!$direccion) $direccion = 'index.php#!/MS_'.$row["IdCapMenu"];
-
+ 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	$resultado = $resultado . '
 	
-		<td>
+		<li class="dropdown">
 			<input type="hidden" id="tdMSAntic'.$row["IdCapMenu"].'" value="'.$row["Titol"].'">
-		</td>';
+		';
 		
 	$resultado = $resultado . '  
-		<td id="tdMS'.$row["IdCapMenu"].'"  align="left">
+		
 			
 			<a href="'.$direccion.'">
-				<button class="ButtonMS"><div id="DIVTitolMS'.$row["IdCapMenu"].'" class="DIVMenuS">'.$row["Titol"].'</div></button>
+				'.$row["Titol"].'
 			</a>
 			
 			
-		</td>';	
+		';	
 		
 	if ($_SESSION["Creacio"]=="1")
 	{
@@ -76,7 +67,7 @@ if (!$direccion) $direccion = 'index.php#!/MS_'.$row["IdCapMenu"];
 	';
 	}
 	
-	$resultado.= '		<td width="2px"></td>';
+	$resultado.= '		</li>';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /* 
@@ -107,20 +98,17 @@ if (!$direccion) $direccion = 'index.php#!/MS_'.$row["IdCapMenu"];
 
 mysql_close($oConn);
 
-
+$resultado = $resultado . '
+		<li>
+			<a href="Directori.php">
+			Directori INc
+			</a>
+		</li>';
 
 
 		
-		///Botó del directori	
-		$resultado = $resultado . '
-		<td  align="left">
-			<a href="Directori.php">
-			<button class="ButtonMS">Directori INc</button>
-			</a>
-		</td>
-		<td width="2px"></td>
+		
 
-';
 
 
 
@@ -136,27 +124,18 @@ mysql_close($oConn);
 
 /////////////////////////////////////////////////////Boton nou MS i GU
 
-$resultado = $resultado . 
-			'<td width="12px" style="padding-right:2px">
-					<table cellpadding="0" cellspacing="0" border="0">';
+
 
 		
 if ($_SESSION["Creacio"]=="1")
 {
 	$resultado .= 	'
-		<tr>	
-			<td colspan="2" align="right">
-				<button class="PlusButton" onclick="NovaMS();"/>
-			</td>
-		</tr>			';
+		<button class="PlusButton" onclick="NovaMS();"/>';
 }
 
 if ($_SESSION["Usuarios"]=="1")
 {
-	$resultado .= 	'
-		<tr>    	
-			<td><button class="GUButton" onclick="MostraGestioGU();"/> </td>
-		</tr>';
+	$resultado .= 	'<button class="GUButton" onclick="MostraGestioGU();"/>';
 }
 
 $resultado .= '</table>
@@ -167,9 +146,7 @@ $resultado .= '</table>
 		$resultado .= '
 		</tr>
 	</table>
-	</td>
-	</tr>
-	</table>
+
 	
 	<input type="hidden" id="CuentaMS" value="'.$cuenta.'">';
 	

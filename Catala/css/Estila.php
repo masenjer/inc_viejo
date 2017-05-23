@@ -7,15 +7,32 @@
 	 
 	while ($row = mysql_fetch_array($result)){
 		$color = "#".$row["WebColor"];
+		$colorRGB = hex2rgb($color);
 	}
 ?>
-body{
-	vertical-align:middle;
-	text-align:center;
-	font-family:Verdana, Geneva, sans-serif;
-	margin:0 0 0 0;
-	border-spacing:none;
-} 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html{
+	margin:0;
+    overflow-x: hidden;
+    }
+body{ 
+	font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333333;
+}
+
 
 #TableOmbres{
 	padding:0;
@@ -32,20 +49,20 @@ body{
 
 .FondoBody
 {
-	background-color:#9a9899;
+	background-color:#FFF;
 }
 
 a
 {
 	text-decoration:none;
-	color:#000;	
+	color:<?php echo $color; ?>;
 }
 
 .APeca
 {
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:11px;
-	color:#d7d8da;
+	font-family: 'Pavanam', sans-serif;
+	font-size:14px;
+	color:<?php echo $color; ?>;
 	cursor:pointer;
 	font-weight:bold;	
 				
@@ -53,7 +70,7 @@ a
 
 .AMidi
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:14px;
 	color:#d7d8da;
 	cursor:pointer;	
@@ -62,7 +79,7 @@ a
 
 .AGran
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:16px;
 	color:#d7d8da;
 	cursor:pointer;	
@@ -90,40 +107,6 @@ a
 	z-index:-50;
 }
 
-.ButtonMS
-{
-	font-family:Verdana, Geneva, sans-serif;	
-	font-size:0.60rem;
-	font-weight:bold;
-	color:#FFF;
-	vertical-align:middle;
-	text-align:center;
-	cursor:pointer;
-	
-	padding-left:5px;
-	padding-right:5px;
-	border:solid;
-	border-width:1px;
-	border-color:#999;
-    background-color:#333;
-    height:28px;
-    width:100%;
-	
-	background-image:URL(../img/CapcaRelleu2.png);
-}
-
-.ButtonMS:hover{
-	background-color:<?php echo $color; ?>;
-}
-
-.ButtonMS:active{
-	background-color:#999;
-}
-
-.ButtonMS a{
-	text-decoration:none;
-	color:#FFF;}
-
 .DIVnuS
 {
 	text-align:center;
@@ -150,27 +133,32 @@ a
 
 .fuenteTitolML /* Titol Menu Esquerre */
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;	
 	font-weight:bold;
 	color:<?php echo $color; ?>;
+    
 	
 	background-color:#f3f3f3;
 }
 
+#fuenteTitolML{
+	padding:10px;
+    
+}
+
 .fuenteML
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;	
 	font-weight:bold;
 	color:#666;
 	cursor:pointer;
-	background-color:#f3f3f3;
 }
 
 .fuenteTitolML_Contrast /* Titol Menu Esquerre */
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:12px;	
 	font-weight:bold;
 	color:<?php echo $color; ?>;
@@ -178,7 +166,7 @@ a
 
 .fuenteML_Contrast
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;	
 	font-weight:bold;
 	color:#000;
@@ -187,7 +175,7 @@ a
 
 .fuenteTitolMD /* Titol Menu Esquerre */
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;	
 	font-weight:bold;
 	background-color:<?php echo $color; ?>;
@@ -200,11 +188,11 @@ a
 	padding-left:5px;
 	padding-right:5px;
 	cursor:pointer;
-}
+} 
 
 .fuenteMD
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;	
 	color:#666;
 	background-color:#f3f3f3;
@@ -212,8 +200,8 @@ a
 
 .fuenteTitolContingut
 {
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:12px;	
+	font-family: 'Pavanam', sans-serif;
+	font-size:16px;	
 	font-weight:bold;
 	color:<?php echo $color; ?>;
 	text-align:left;
@@ -221,28 +209,37 @@ a
 
 .fuenteContingut
 {
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:11px;	
+	font-family: 'Pavanam', sans-serif;
+	font-size:16px;	
 	color:#666;
+}
+
+.fuenteContingut input{
+width: 200px;
+}
+
+.fuenteContingut select{
+width: 200px;
 }
 
 .fuenteContingut table
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;	
 	color:#666;
 }
 
 #DIVRutaPage
 {
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:10px;	
+	font-family: 'Pavanam', sans-serif;
+	font-size:13px;	
 	color:#999;
+    text-align:right;
 }
 
 .fuenteCercador
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:10px;	
 	color:#666;
 }
@@ -250,7 +247,7 @@ a
 
 .RutaCercador
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:9px;	
 	color:<?php echo $color; ?>;
 	cursor:pointer;
@@ -281,7 +278,7 @@ a
 
 .fuenteTituloGestionNoticias
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:12px;	
 	font-weight:bold;
 	color:#000;
@@ -289,7 +286,7 @@ a
 
 .fuenteGestionNoticia
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;	
 	color:#000;
 }
@@ -320,13 +317,7 @@ a
 	background:url(../img/FondoLisNoticias.png);
 }
 
-.fuenteLinNoticia
-{
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:11px;	
-	color:#000;
-	cursor:pointer;
-}
+
 
 #DIVConfirmaEliminaNot
 {
@@ -356,13 +347,7 @@ a
 	cursor:pointer;
 }
 
-.LinNoticia
-{
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:11px;	
-	color:#666;
-	text-align:justify;
-}
+
 
 #DIVGU
 {
@@ -387,7 +372,7 @@ a
 
 .CapGrid
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;	
 	font-weight:bold;	
 }
@@ -412,7 +397,7 @@ a
 	height:40px; 
 	vertical-align:middle;	
 	display:none;
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:16px;
 	color:#F00;
 	cursor:pointer;
@@ -420,7 +405,7 @@ a
 
 .crd
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:10px;
 	font-weight:bold;
 	vertical-align:middle;
@@ -445,7 +430,7 @@ a
 .PeuPagina
 {
 	background-image:URL(../img/PeuPagina.jpg);
-	height:144px;
+	height:175px;
     background-size:100% 100%;
 }
 
@@ -510,11 +495,6 @@ a
 	background-repeat:no-repeat;
 }
 
-.CapcaSuperiorPage
-{
-	background-image:URL(../img/CapcaSuperiorPage.jpg)
-}
-
 .FonsMenuSupButton
 {
 	background-image:URL(../img/FonsnuSupButton.jpg)
@@ -522,13 +502,16 @@ a
 
 .FonsMenuSupInterButtonGris
 {
-	background:#d0d0ce;
-	background-image:URL(../img/FonsMenuSupInterButtonGris.jpg);
-	background-repeat:repeat-x;
+	
 }
 
 #FonsMenuSupInterButtonGris{
 	width:100%;
+	background-color:<?php echo $color; ?>;
+	height:40px;
+	/*background:#d0d0ce;
+	background-image:URL(../img/FonsMenuSupInterButtonGris.jpg);
+	background-repeat:repeat-x;*/
 }
 
 .RayaGris
@@ -615,7 +598,7 @@ cursor:pointer;
 
 .TitolHome 
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;
 	color:#FFF;	
 	font-weight:bold;
@@ -624,14 +607,6 @@ cursor:pointer;
 	border: 1px solid <?php echo $color; ?>;
 }
 
-.fuenteEnDirHome
-{
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:11px;	
-	font-weight:bold;
-	color:#666;
-	cursor:pointer;
-}
 
 .CaixaContacte{
 	border-style:solid;
@@ -641,30 +616,11 @@ cursor:pointer;
 	padding-right:5px;	
 }
 
-.TitolContacteHome
-{
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:10px;
-	color:#666;
-	font-weight:bold;	
-}
 
-.fuenteContacteHome
-{
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:9px;	
-	color:#666;
-	text-align:left;
-}
 
-.InfoContacteHome
-{
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:9px;	
-	color:#666;
-	font-weight:bold;
-	cursor:pointer;
-}
+
+
+
 
 #portfolio{
 	cursor:pointer;
@@ -673,7 +629,7 @@ cursor:pointer;
 
 .TitolMapaWeb
 {
-	font-family:Verdana, Geneva, sans-serif;	
+	font-family: 'Pavanam', sans-serif;	
 	font-size:11px;
 	font-weight:bold;
 	color:#FFF;
@@ -689,7 +645,7 @@ cursor:pointer;
 
 .fuenteMapaWeb
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;	
 	color:#666;
 	cursor:pointer;
@@ -697,7 +653,7 @@ cursor:pointer;
 
 a:link.OpcionsContingut
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;	
 	text-decoration:none;
 	color:#444;
@@ -706,7 +662,7 @@ a:link.OpcionsContingut
 
 a:visited.OpcionsContingut
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;	
 	text-decoration:none;
 	color:#444;
@@ -716,7 +672,7 @@ a:visited.OpcionsContingut
 .ButtonDelete
 {
 	border:none;
-	background:url(../img/Delete.jpg);
+	background:url(../img/delete.jpg);
 	cursor:pointer;
 	width:32px;
 	height:32px;
@@ -733,14 +689,14 @@ a:visited.OpcionsContingut
 
 .InfoColor{
 	color:#ffffff;
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:9;
 	padding:5px;
 }
 
 .fuenteInfoDROW
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:12px;	
 	color:#FFF;
 	font-weight:bold;
@@ -753,7 +709,7 @@ a:visited.OpcionsContingut
 
 .PertanyUAB_0
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:12px;	
 	color:#FFF;
 	font-weight:bold;
@@ -768,7 +724,7 @@ a:visited.OpcionsContingut
 
 .PertanyUAB_1
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:12px;	
 	color:#FFF;
 	font-weight:bold;
@@ -792,7 +748,7 @@ a:visited.OpcionsContingut
 
 .fontPeuPagina
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:10px;
 	text-decoration:none;
 	color:#FFF;
@@ -831,7 +787,7 @@ a:visited.OpcionsContingut
 
 .fuenteTitolMenuPageOculta /* Titol Menu Esquerre */
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;	
 	font-weight:bold;
 	color:#C00;
@@ -841,7 +797,7 @@ a:visited.OpcionsContingut
 
 .fuenteMenuPageOculta
 {
-	font-family:Verdana, Geneva, sans-serif;
+	font-family: 'Pavanam', sans-serif;
 	font-size:11px;	
 	font-weight:bold;
 	color:#FFF;
@@ -874,3 +830,623 @@ a:visited.OpcionsContingut
 	overflow-y:auto;
 	aoverflow-x:none;
 }
+
+.ListadoMiniIMGHome5{
+	width:161px;
+    height:121px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 10px 10px 10px;
+	/* para Opera */
+	border-radius: 10px 10px 10px 10px;
+    /*opacity:0.3;
+   cursor:pointer;*/
+}
+
+.ListadoMiniIMGHome5:hover{
+	opacity:1;
+}
+
+
+.FacebookButton{
+	height:25px;
+	width:26px;
+	border:none;
+	background:url(../img/Buttons/BannerFacebook.png);
+	background-repeat:no-repeat;
+	cursor:pointer;	
+}
+
+.FacebookButton:hover{
+	background:URL(../img/Buttons/BannerFacebook_hover.png);
+	background-repeat:no-repeat;
+}
+
+.TwitterButton{
+	height:25px;
+	width:26px;
+	border:none;
+	background:url(../img/Buttons/BannerTwitter.png);
+	background-repeat:no-repeat;
+	cursor:pointer;	
+}
+
+.TwitterButton:hover{
+	background:URL(../img/Buttons/BannerTwitter_hover.png);
+	background-repeat:no-repeat;
+}
+
+.GoogleButton{
+	height:25px;
+	width:26px;
+	border:none;
+	background:url(../img/Buttons/BannerGoogle.png);
+	background-repeat:no-repeat;
+	cursor:pointer;	
+}
+
+.GoogleButton:hover{
+	background:URL(../img/Buttons/BannerGoogle_hover.png);
+	background-repeat:no-repeat;
+}
+
+.INButton{
+	height:25px;
+	width:26px;
+	border:none;
+	background:url(../img/Buttons/BannerIN.png);
+	background-repeat:no-repeat;
+	cursor:pointer;	
+}
+
+.INButton:hover{
+	background:URL(../img/Buttons/BannerIN_hover.png);
+	background-repeat:no-repeat;
+}
+
+.YoutubeButton{
+	height:25px;
+	width:26px;
+	border:none;
+	background:url(../img/Buttons/BannerYoutube.png);
+	background-repeat:no-repeat;
+	cursor:pointer;	
+}
+
+.YoutubeButton:hover{
+	background:URL(../img/Buttons/BannerYoutube_hover.png);
+	background-repeat:no-repeat;
+}
+
+.PlusButton{
+	width:16px;
+	height:16px;
+	background:URL(../img/plus.jpg);
+	background-size:100% 100%;
+	border:none;
+	cursor:pointer;
+}
+
+.GUButton{
+	width:16px;
+	height:16px;
+	background:URL(../img/GU.jpg);
+	background-size:100% 100%;
+	border:none;
+	cursor:pointer;
+}
+
+
+
+/* ----------------------Espacio para el login de la home---------------------- */
+.fuenteTitolLogin{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:<?php echo $color; ?>;
+	text-align:left;
+	font-weight:bold;
+}
+.fuenteLogin{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#aaa;
+	text-align:justify;
+}
+
+.inputfuenteLogin {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:15px;
+	color:#333;
+	text-align:left;
+	vertical-align:middle;
+	border:1px solid #dedede;
+	-moz-border-radius: 10px 10px 10px 10px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 10px 10px 10px;
+	/* para Opera */
+	border-radius: 10px 10px 10px 10px;
+	padding:3px;
+	color:#aaa;
+}
+
+.CajaBlancaBordeRedondo{
+	padding:10px;
+	background-color: #FFF;
+	height: 215px;
+	width: 100%;
+	border:1px solid #dedede;
+	-moz-border-radius: 10px 10px 10px 10px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 10px 10px 10px;
+	/* para Opera */
+	border-radius: 10px 10px 10px 10px;
+	
+	
+}
+
+.LoginButton
+{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:15px;
+	background-color:<?php echo $color; ?>;
+	-moz-border-radius: 10px 10px 10px 10px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 10px 10px 10px;
+	/* para Opera */
+	border-radius: 10px 10px 10px 10px;
+	height:30px;
+	color:#FFF;
+	width:100%;
+	cursor:pointer;
+	border:none;
+}
+
+.LoginButton:hover
+{
+	background-color:#555;
+}
+
+/* ----------------------Espacio para el login de la home---------------------- */
+
+.RecuadreArrodonitColorSinPadding{
+	-moz-border-radius: 10px 10px 10px 10px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 10px 10px 10px;
+	/* para Opera */
+	border-radius: 10px 10px 10px 10px;
+	background-color:rgba(<?php echo $colorRGB; ?>, 0.1);
+}
+
+.RecuadreArrodonitColor{
+    padding:20px;
+    padding-top:20px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 10px 10px 10px;
+	/* para Opera */
+	border-radius: 10px 10px 10px 10px;
+	background-color:rgba(<?php echo $colorRGB; ?>, 0.1);
+    margin-bottom:20px;
+   
+    box-sizing:border-box; 
+    -moz-box-sizing:border-box;    /* Firefox */ 
+    -webkit-box-sizing:border-box; /* Safari */
+}
+
+.RecuadreArrodonitGris{
+    padding:20px;
+    padding-top:20px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 10px 10px 10px;
+	/* para Opera */
+	border-radius: 10px 10px 10px 10px;
+	background-color:rgba(0,0,0, 0.1);
+    margin-bottom:20px;
+   
+    box-sizing:border-box; 
+    -moz-box-sizing:border-box;    /* Firefox */ 
+    -webkit-box-sizing:border-box; /* Safari */
+}
+
+.ArrodonaDIV{ 
+	-moz-border-radius: 10px 10px 10px 10px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 10px 10px 10px;
+	/* para Opera */
+	border-radius: 10px 10px 10px 10px;
+
+    box-sizing:border-box; 
+    -moz-box-sizing:border-box;    /* Firefox */ 
+    -webkit-box-sizing:border-box; /* Safari */
+}
+
+.ColorOpaco{
+	background-color:<?php echo $color; ?>;
+    color:#FFF;
+}
+
+.MenuVertical{
+    padding-left:40px;
+    padding-bottom:40px;
+    padding-top:40px;
+	-moz-border-radius: 10px 0px 0px 10px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 0px 0px 10px;
+	/* para Opera */
+	border-radius: 10px 0px 0px 10px;
+	background-color:#f9f9f9;
+    margin-bottom:20px;
+}
+
+.ContingutInferior{
+    padding:40px;
+    padding-top:20px;
+	-moz-border-radius: 0px 10px 10px 10px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 0px 10px 10px 10px;
+	/* para Opera */
+	border-radius: 0px 10px 10px 10px;
+	background-color:#f9f9f9;
+    margin-bottom:20px;
+}
+
+.fondoMV0{
+	background-color:rgba(<?php echo $colorRGB; ?>, 0.1);
+    cursor:pointer;
+    padding:10px;
+}
+
+.fondoMV0:hover{
+	background-color:rgba(50,50,50, 0.1);
+}
+
+.fondoMV1{
+	background-color:rgba(150,150,150, 0.1);
+    cursor:pointer;
+    padding:10px;
+}
+
+.fondoMV1:hover{
+	background-color:rgba(50,50,50, 0.1);
+}
+
+
+
+
+.BotonRedondo{
+    width:20px;
+    height:20px;
+	color:<?php echo $color; ?>;
+	-moz-border-radius: 10px 10px 10px 10px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 10px 10px 10px 10px;
+	/* para Opera */
+	border-radius: 10px 10px 10px 10px;
+	background:none;
+    border: 2px solid <?php echo $color; ?>;
+	font-weight:bold;
+   	font-family: 'Pavanam', sans-serif;
+	font-size:12px;	
+	text-align:center;
+    padding:0;
+    margin:0;
+    cursor:pointer;
+    background:#FFF;
+}
+
+.BotonRedondo:hover{
+	background:rgba(<?php echo $colorRGB; ?>, 0.2);
+}
+
+.Redondo{
+    margin: 0px;
+    padding: 0px;
+    border-radius: 800px;
+    overflow: hidden;
+    width:185px; 
+    height:185px;
+    display:inline-block;
+   	border:1px solid <?php echo $color; ?>;
+
+}
+
+.Logo{
+	background:url(../img/Logo.png) #FFF center no-repeat;
+    background-size:130px ;
+    margin:0px;
+}
+
+.UAB{
+	background:url(../img/UABTrans.png) <?php echo $color; ?> center no-repeat;
+    background-size:130px ;
+    display:inline-block;
+    margin:0px;
+}
+
+.IMGHomeDin{
+}
+
+.inputContVar{
+	width:100%;
+    text-align:left;
+    padding:10px;
+    margin-bottom:10px;
+}
+
+
+
+.h1{
+	color:#333;<?php //echo $color; ?>;
+   	
+	font-size:70px;	
+    text-align:center;
+    width:100%;
+}
+
+h1{
+	color:<?php echo $color; ?>;
+   	
+	font-size:24px;	
+    text-align:left;
+    margin:0;
+   	
+}
+
+h2{
+	color:<?php echo $color; ?>;
+   	
+	font-size:18px;	
+    text-align:left;
+}
+
+h3{
+	color:#666;
+	
+	font-size:14px;	
+	color:#666;
+    text-align:justify;
+    line-height:20px;
+}
+
+.h3{
+	color:<?php echo $color; ?>;
+   	font-family: 'Pavanam', sans-serif;
+	font-size:16px;	
+    text-align:justify;
+}
+
+.normal{
+	color:#666;
+	font-family: 'Pavanam', sans-serif;
+	font-size:14px;	
+	color:#666;
+    text-align:justify;
+    line-height:20px;
+}
+
+.normal img{
+	-moz-border-radius: 5px 5px 5px 5px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 5px 5px 5px 5px;
+	/* para Opera */
+	border-radius: 5px 5px 5px 5px;
+}
+
+
+.capcalera{
+	color:<?php echo $color; ?>;
+    padding:5px;
+}
+
+.capcalera a:hover{
+	color:#FFF;
+   	background-color:<?php echo $color; ?>;
+   	-moz-border-radius: 5px 5px 5px 5px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 5px 5px 5px 5px;
+	/* para Opera */
+	border-radius: 5px 5px 5px 5px;
+
+}
+
+.CapcaSuperiorPage
+{
+	
+	background-color:rgba(<?php echo $colorRGB; ?>, 0.1);
+    height:40px;
+    text-align:center;
+    
+}
+
+
+
+
+.ButtonMS
+{
+	font-family: 'Pavanam', sans-serif;
+	font-size: 20px;
+//	-moz-border-radius: 10px 10px 10px 10px;
+//	/*para Safari y Chrome*/
+//	-webkit-border-radius: 10px 10px 10px 10px;
+//	/* para Opera */
+//	border-radius: 10px 10px 10px 10px;
+	vertical-align:middle;
+	text-align:center; 
+	cursor:pointer;  
+	
+	color:#fff; 
+	padding-left:5px;
+	padding-right:5px; 
+    height:40px;
+    width:100%; 
+    border:none;
+    background:none;
+    margin-top:0;
+	
+}
+
+.ButtonMS:hover{
+/*	color:#FFF;
+	background-color:<?php echo $color; ?>;
+*/
+	background-color:rgba(255,255,255,0.5);
+    
+    
+}
+
+.ButtonMS:active{
+	background-color:#999;
+}
+
+.ButtonMS a{
+	text-decoration:none;
+	color:#FFF;}
+
+.ButtonInicioMS{
+	width:40px;
+	background:url(../img/Home.png) rgba(<?php echo $colorRGB; ?>, 0.4) center no-repeat;
+}
+
+
+.DIVContNoticias{
+	display: inline-block;
+    width:385px; 
+    float:left;
+    margin-right:20px;
+       
+    box-sizing:border-box; 
+    -moz-box-sizing:border-box;    /* Firefox */ 
+    -webkit-box-sizing:border-box; /* Safari */
+
+}
+
+.ContVariableHome{
+	display: inline-block; 
+    width:55%; 
+    float:left;
+    
+}
+
+.RayaSeparación{
+	width:100%;
+    height:10px;
+    border-top:1px solid #ddd;
+}
+
+.EnllacEndir{
+	border-bottom:1px solid rgba(<?php echo $colorRGB; ?>, 0.2);
+    padding:10px;
+    cursor:pointer;
+    text-align:left;
+}
+
+.EnllacEndir:hover{
+//	-moz-border-radius: 10px 10px 10px 10px;
+//	/*para Safari y Chrome*/
+//	-webkit-border-radius: 10px 10px 10px 10px;
+//	/* para Opera */
+//	border-radius: 10px 10px 10px 10px;
+//	background-color:rgba(<?php echo $colorRGB; ?>, 0.2);
+	border-bottom: 1px solid <?php echo $color; ?>;
+   // margin-bottom: -2px;
+   	color:<?php echo $color; ?>;
+}
+
+.DIVContColumnaDerecha{
+	display: inline-block; 
+	float:right;
+    width:270px;
+    padding-top:20px;
+}
+
+.MenuDret{
+	cursor:pointer;
+}
+
+.MenuDret:hover{
+	color:#FFF;
+	background-color:rgba(<?php echo $colorRGB; ?>, 0.2);
+}
+
+* {
+    margin: 0;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #f5f5f5;
+  text-align:center;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.normal li{
+	margin-bottom:15px;
+}
+
+.IMGHome img{
+	-moz-border-radius: 15px 15px 15px 15px;
+	/*para Safari y Chrome*/
+	-webkit-border-radius: 15px 15px 15px 15px;
+	/* para Opera */
+	border-radius: 15px 15px 15px 15px;
+}
+
+.DivCerca{
+	width:300px;
+	margin-right:3px;
+	vertical-align:center;
+	margin-top:3px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.BarraIdioma{
+	margin-top:10px;
+	margin-right:10px;
+}
+
+
+
+
+
+
+
+<?php
+function hex2rgb($hex) {
+   $hex = str_replace("#", "", $hex);
+
+   if(strlen($hex) == 3) {
+      $r = hexdec(substr($hex,0,1).substr($hex,0,1));
+      $g = hexdec(substr($hex,1,1).substr($hex,1,1));
+      $b = hexdec(substr($hex,2,1).substr($hex,2,1));
+   } else {
+      $r = hexdec(substr($hex,0,2));
+      $g = hexdec(substr($hex,2,2));
+      $b = hexdec(substr($hex,4,2));
+   }
+   $rgb = $r.",".$g.",".$b;
+   //return implode(",", $rgb); // returns the rgb values separated by commas
+   return $rgb; // returns an array with the rgb values
+}
+?>

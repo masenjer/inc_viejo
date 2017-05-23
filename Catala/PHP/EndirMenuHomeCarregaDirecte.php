@@ -1,6 +1,9 @@
 <?php
-include("../rao/sas_con.php");
-include("../rao/PonQuita.php"); 
+
+include("rao/sas_con.php");
+//include("rao/PonQuita.php"); 
+
+
 
 ini_set("session.gc_maxlifetime",3);
 ini_set('session.cache_expire',3);
@@ -18,7 +21,7 @@ if ($_SESSION["Noticias"]=="1")
 $SQL = "SELECT * FROM EnDirHome WHERE  IdSite =".$_SESSION["IdSite"]."  order by Orden ASC";
 $result = mysql_query($SQL,$oConn);
 
-$resultado = '<ul class="fitxa-llistat">';
+echo '<ul class="fitxa-llistat">';
 
 while ($row = mysql_fetch_array($result))
 {
@@ -39,7 +42,7 @@ while ($row = mysql_fetch_array($result))
 		}
 	}
 	
-	$resultado = $resultado . '
+	echo '
 	<li>
 		<a '.$accion.' target="'.$target.'">'.$row["Titol"].'<span class="ico more" aria-hidden="true"></span></a>
 	</li>';
@@ -47,9 +50,9 @@ while ($row = mysql_fetch_array($result))
 
 mysql_close($oConn);
 
-$resultado = $resultado . '
+echo '
 	
 </ul>';
 
-echo $resultado;
+
 ?>

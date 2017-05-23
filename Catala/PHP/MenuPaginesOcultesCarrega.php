@@ -59,7 +59,7 @@ if ($_SESSION["Creacio"]=="1")
 					<tr>
 						<td><button class="EditButton" onClick="EditaTitolLPage('.$row["IdLinMenu"].')"/></td>
 						<td>
-							<input class="OrdenMO" type="text"  id="OrdenME'.$row["IdLinMenu"].'" value="'.$row["Orden"].'"  onKeyPress="submitenter(5,event,'.$row["IdLinMenu"].')"></td>						
+							<input class="OrdenML" type="text"  id="OrdenME'.$row["IdLinMenu"].'" value="'.$row["Orden"].'"  onKeyPress="submitenter(5,event,'.$row["IdLinMenu"].')"></td>						
 					</tr>
 					<tr>
 						<td><button class="LinMenuDeleteButton" onClick="MostraEliminaTOT(1,'.$idCap.','.$row["IdLinMenu"].');"/></td>

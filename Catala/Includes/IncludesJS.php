@@ -1,4 +1,7 @@
-    <script src="JQuery/jquery-1.4.4.min.js" type="text/javascript"> </script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+ <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+ 
     <script src="JQuery/jquery-ui-1.8.7.custom.min.js" type="text/javascript"> </script>
     <script src="JQuery/jquery.ui.datepicker-es.js" type="text/javascript"> </script>
     <script src="JQuery/colorpicker.js" type="text/javascript"> </script>
@@ -27,3 +30,6 @@
 	<script type="text/javascript" src="ckeditor/adapters/jquery.js"> </script>
     <script type="text/javascript" src="ckfinder/ckfinder.js"></script> 
     <script src="JS/p.js" type="text/javascript"> </script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

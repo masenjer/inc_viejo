@@ -2,6 +2,7 @@
 //////////////////////////////////////////////////
 
 
+
 function replaceAll( text, busca, reemplaza )
 {
 	while (text.toString().indexOf(busca) != -1)
@@ -44,8 +45,8 @@ function CarregaPagina()
 	DefineCalendario('FechaNoticiaIN');
 	DefineCalendario('FechaNoticiaOUT');
 
-	NoticiesCarregaContingut();
-	NoticiesCarregaContingutHistoric();
+	//NoticiesCarregaContingut();
+	//NoticiesCarregaContingutHistoric();
 	
 	if (!window.location.hash)
 	{
@@ -66,9 +67,9 @@ function HomeCarrega()
 	$("#DIVHome").fadeIn(1000);
 	$('#ME').html("");
 	
-	CarregaMenuDestacatsHome();
-	CarregaMenuEnDirHome();
-	CarregaMenuContacteHome();
+	//CarregaMenuDestacatsHome();
+	//CarregaMenuEnDirHome();
+	//CarregaMenuContacteHome();
 	
 	//CarregaVideo();
 
@@ -296,8 +297,10 @@ function LlegadaMenuDestacatHomeCarrega(data)
 	
 	CanviaColorButtons($("#VARColorButtons").val());
 	
+	/*
 	$("#DIVIMGHome1").css("height",$('#ContHomeListDestacats').height()-15);	 
 	$("#DIVIMGHome2").css("height",$('#ContHomeListDestacats').height()-15);	 
+	*/
 }
 
 function CarregaMenuEnDirHome()
@@ -307,8 +310,8 @@ function CarregaMenuEnDirHome()
 
 function LlegadaCarregaMenuEnDirHome(data)
 {
-	$('#ContHomeListEnDir').html("");
-	$('#ContHomeListEnDir').html(data);
+	$('.ContHomeListEnDir').html("");
+	$('.ContHomeListEnDir').html(data);
 }
 
 function AbreGestorEnDir()
@@ -345,8 +348,8 @@ function CarregaMenuContacteHome()
 
 function LlegadaCarregaMenuContactHome(data)
 {
-	$('#ContHomeContacte').html("");
-	$('#ContHomeContacte').html(data);
+	$('.ContHomeContacte').html("");
+	$('.ContHomeContacte').html(data);
 	CanviaColorWeb($("#VARColorWeb").val());	 
 }
 

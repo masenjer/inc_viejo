@@ -1,5 +1,5 @@
 <?php
-include("../rao/sas_con.php");
+include("rao/sas_con.php");
 
 ini_set("session.gc_maxlifetime",3);
 session_start();

@@ -1,4 +1,6 @@
-<?php session_start(); 
+<?php 
+
+session_start(); 
 header('Content-Type: text/html; charset=utf-8');
 
 $_SESSION["IdSite"] = 0;
@@ -15,7 +17,7 @@ $_SESSION["IdSite"] = 0;
 </head>
 
 <body onLoad="CarregaPagina()" class="FondoBody">
-<?php include "AvisoCookies.php"; ?>
+<?php // include "AvisoCookies.php"; ?>
 <?php include_once("../analyticstracking.php") ?>
 
 <?php 
@@ -25,53 +27,8 @@ $_SESSION["IdSite"] = 0;
 
 <input type="hidden" id="primerDIV" value="0" />
 
+<?php CarregaAplicacio(); ?>
 
-
-<table width="928px" id="TableOmbres" cellpadding="0" cellspacing="0" border="0" align="center">
-	<tr>
-    	<td class="TOTALOmbraSupEsq"></td>
-    	<td class="TOTALOmbraSupCentral"></td> 
-    	<td class="TOTALOmbraSupDreta"></td>
-    </tr>
-	<tr>
-    	<td class="TOTALOmbraEsquerra"></td>
-    	<td style="border:1px solid #666;"><?php CarregaAplicacio(); ?></td>
-    	<td class="TOTALOmbraDreta"></td>
-    </tr>
-	<tr>
-    	<td class="TOTALOmbraInfEsq"></td>
-    	<td class="TOTALOmbraInfCentral"></td>
-    	<td class="TOTALOmbraInfDreta"></td>
-    </tr>
-    <tr>
-    	<td colspan="6" align="center" valign="middle" class="fontPeuPagina">
-        	<table>
-            	<tr>
-                	<td align="center" class="fontPeuPagina">
-                    	<table>
-                        	<tr>
-                            	<td style="cursor:pointer" onClick="HomeCarrega();" class="fontPeuPagina"> 
-                                	Inici
-                                </td>
-                                <td class="fontPeuPagina">|</td>
-                            	<td style="cursor:pointer" onClick="MostraMapaWeb();" class="fontPeuPagina"> 
-                                	Mapa del web
-                                </td>
-                                <td class="fontPeuPagina">|</td>
-                                <td>
-                                	<a href="http://crd.uab.cat" class="fontPeuPagina" target="_blank">Sobre el web</a>
-                                </td>
-                            </tr>
-                        </table>                    	
-                    </td>
-                </tr>
-                <tr>
-                	<td height="15px"></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
 
 
 

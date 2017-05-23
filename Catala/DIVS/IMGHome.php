@@ -3,10 +3,10 @@ function MostraIMGHome()
 {
 ?>
 	<script src="JS/IMGHome.js" type="text/javascript"></script>
-
-	<div id="DIVIMGHome1" style="vertical-align:top; height:129px; width:653px;position:absolute;" align="center"></div>
-	<div id="DIVIMGHome2" style="vertical-align:top; height:129px; width:653px;position:absolute;" align="center"></div>
-    <div id="DIVEditIMGHome" style="vertical-align:top; height:215px; width:444px;">
+ 
+	<div class="" id="DIVIMGHome1" style="vertical-align:top; height:250px;  width:100%;position:absolute; " align="center"></div>
+	<div class="" id="DIVIMGHome2" style="vertical-align:top; height:250px; width:100%;position:absolute;" align="center"></div>
+    <div id="DIVEditIMGHome" style="vertical-align:top; height:250px; width:444px;">
     	<table width="100%" cellspacing="0" cellpadding="0" border="0">
         	<tr>
             	<td align="left">
@@ -19,7 +19,7 @@ function MostraIMGHome()
             </tr>
             <tr>
             	<td>
-                	<div id="DIVIdGestioIMGHome" style="height:175px; overflow-x:auto; overflow-y:hidden; max-width:655px;	"></div>
+                	<div id="DIVIdGestioIMGHome" style="height:250px; overflow-x:auto; overflow-y:hidden; max-width:655px;	"></div>
                 </td>
             </tr>
         </table>

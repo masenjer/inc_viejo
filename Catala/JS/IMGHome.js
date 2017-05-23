@@ -58,7 +58,7 @@ function MostraImatgesHomeMovils(DataIMG,mida,n)
 	//alert("actual:"+actual+", mida:"+mida);
 	if (n != 0)
 	{
-		$("#DIVIMGHome2").html($("#DIVIMGHome1").html());
+		$("#DIVIMGHome2").css("background-image", ($("#DIVIMGHome1").css("background-image")));
 		$("#DIVIMGHome2").show();
 		
 	}
@@ -68,8 +68,9 @@ function MostraImatgesHomeMovils(DataIMG,mida,n)
 	
 	
 	//alert('<img src="IMGHomeDin/'+cadena[0]+'" style="'+AoA+'">');
+	$("#DIVIMGHome1").css("background","#d43");
 	
-	$("#DIVIMGHome1").delay(500).html('<img src="../IMGHomeDin/'+cadena[0]+'" style="width:100%; height:100%">');
+	$("#DIVIMGHome1").delay(500).css("background-image", "url('../IMGHomeDin/"+cadena[0]+"')");
 	
 	$("#DIVIMGHome2").fadeOut(2000);
 	

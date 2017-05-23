@@ -1,5 +1,7 @@
 <?php
 
+
+
 error_reporting (5); 
 include("../rao/sas_con.php"); 
 
@@ -8,6 +10,8 @@ ini_set("session.gc_maxlifetime",3);
 session_start();
 
 $idCap = $_GET["n"];
+
+$sub = false;
 
 $SQL = "SELECT Titol FROM CapMenu WHERE IdSite =".$_SESSION["IdSite"]." AND IdCapMenu = ".$idCap;
 $result = mysql_query($SQL,$oConn);
@@ -19,71 +23,99 @@ while ($row = mysql_fetch_array($result))
 $SQL = "SELECT * FROM LinMenu WHERE IdSite =".$_SESSION["IdSite"]." AND IdCapMenu = ".$idCap." AND IdLinMenuRel = 0 AND Tipus <> 2  order by orden";
 $result = mysql_query($SQL,$oConn);
 
-$resultado = '
-<table width="100%" cellspacing="0" cellpadding="0" border="0"  style="border-style:solid;border-width:1px;border-color:#dddddd">
-	<tr>
-		<td>
-			<table width="100%" cellpadding="0" cellspacing="0" border="0">
-				<tr valign="top">
-					<td id="fuenteTitolML" width="5px" class="fuenteTitolML"></td>
-					<td id="fuenteTitolML" align="left" valign="middle" height="35px" class="fuenteTitolML"> '.$TitolCap.' </td>
-					<td id="fuenteTitolML" width="5px" class="fuenteTitolML" ></td>
-				</tr>
+echo '
+
+<div class="sidebar menu-left">
+		<div class="navbar">
+
+
+
+  	<div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed ico" data-toggle="collapse" data-target="#navbar-sidebar" aria-expanded="false" aria-controls="navbar">
+	    <span class="ico hamburguer" aria-hidden="true"></span>
+        <span class="sr-only">Prem per desplegar el menú de  null</span>
+      </button>
+      
+	  
+			
+	  	  
+    <span class="visible-xs visible-sm navbar-brand">Estructura docent</span>
+    </div>
+
+
+<nav id="navbar-sidebar" class="navbar-collapse collapse sidebar-navbar-collapse" role="navigation">
+    	<nav id="nav-context" class="menu-content" role="navigation" aria-label="Menú principal"><!-- UAB2013/Responsive_WD/Common/CSElementDisplayLeftMenu_RWD 8-->
+
+			<div class="aside-nav-content">
+			    <div role="tab" id="id_1" class="title">
+					<a aria-controls="collapseC0" aria-expanded="true" href="#collapseC0" data-parent="#accordion" data-toggle="collapse" role="button">
+						'.$TitolCap.'
+						<span class="ico down" aria-hidden="true"></span>
+				    </a>
 				
-			</table>
-			<table width="100%"  cellpadding="0" cellspacing="0" border="0" class="fuenteML" id="fuenteML">';
+				</div>
+					<div id="collapseC0" class="collapse in" role="tabpanel" aria-labelledby="id_1">
+						<ul>
+
+';
 
 while ($row = mysql_fetch_array($result))
 {
 	if ($_SESSION["Creacio"]=="1")
 	{
-		$DobleClic = 'ondblclick="EditaTitolLPage('.$row["IdLinMenu"].')"';	
-	}
+		$accion = '
+
+			<div class="row">
+				<div class="col-md-2">
+					<button class="EditButton" onClick="EditaTitolLPage('.$row["IdLinMenu"].')"/>			
+				</div>
+				
+				<div class="col-md-2">	<input class="OrdenML" type="text"  id="OrdenME'.$row["IdLinMenu"].'" value="'.$row["Orden"].'"  onKeyPress="submitenter(5,event,'.$row["IdLinMenu"].');" >
+				</div>
+
+				<div class="col-md-2">	<button class="LinMenuDeleteButton" onClick="MostraEliminaTOT(1,'.$idCap.','.$row["IdLinMenu"].');"/>
+				</div>				
+				
+			</div>';
+
+		echo '
 	
-	$resultado = $resultado . '
-	<tr valign="middle">
-		<td width="5px">
 			<input type="hidden" id="tdMEAntic'.$row["IdLinMenu"].'" value="'.$row["Titol"].'">
 			<input type="hidden" id="tdMEhrefAntic'.$row["IdLinMenu"].'" value="'.$row["Titol"].'_'.$row["IdLinMenu"].'_1">
-		</td>';
+		';
+	}
+	
+	
 		
-	if ($row["Tipus"] == 1)
+	if ($row["Tipus"] == 1) //Página de contenido
 	{	
-		$resultado = $resultado . '  
-		<td id="tdME'.$row["IdLinMenu"].'" align="left"  height="25px" class="fuenteML" style="padding-top:10px;">
-			<a href = "index.php#!/'.$row["Titol"].'_'.$row["IdLinMenu"].'_1" style="text-decoration:none;" class="fuenteML">
-				<div id="DIVTitolLPage'.$row["IdLinMenu"].'">'.$row["Titol"].'</div>
-			</a>
-		</td>';
+		echo '  
+		<li  class="no-sub">
+			<a href = "index.php#!/'.$row["Titol"].'_'.$row["IdLinMenu"].'_1">
+				<div id="tdME'.$row["IdLinMenu"].'"><div id="DIVTitolLPage'.$row["IdLinMenu"].'">'.$row["Titol"].'</div></div>
+			</a>'.$accion.'
+		</li>';
 	}
-	else
+	else //Página de título
 	{
-		$resultado = $resultado . '
-		<td id="tdME'.$row["IdLinMenu"].'" align="left" '.$DobleClic.'  height="35px" class="fuenteTitolML" valign="bottom">
-			<div id="DIVTitolLPage'.$row["IdLinMenu"].'">'.$row["Titol"].'</div>
-		</td>';
+		if ($sub){
+			echo '</ul></li>';
+		}
+
+		echo '
+		<li class="sub">
+			
+			<a href="#collapse3_deep'.$row["IdLinMenu"].'" data-toggle="collapse" data-parent="#collapse3_deep0" aria-expanded="false" class="collapsed"><div id="tdME'.$row["IdLinMenu"].'"><div id="DIVTitolLPage'.$row["IdLinMenu"].'">'.$row["Titol"].'</div></div> <span class="ico mes"></span></a>
+			'.$accion.'
+			<ul id="collapse3_deep'.$row["IdLinMenu"].'" class="collapse" style="height: 0px;" aria-expanded="false">
+		';
+
+		$sub = true;
 	}
 	
 	
-	$resultado = $resultado . '
-		<td width="5px"></td>';
-		
-	if ($_SESSION["Creacio"]=="1")
-	{
-		$resultado = $resultado . '<td align="right" width="42px">
-			<table cellpadding="0" cellspacing="0" border="0">
-				<tr>
-					<td><button class="EditButton" onClick="EditaTitolLPage('.$row["IdLinMenu"].')"/></td>
-					<td rowspan="2">
-						<input class="OrdenML" type="text"  id="OrdenME'.$row["IdLinMenu"].'" value="'.$row["Orden"].'"  onKeyPress="submitenter(5,event,'.$row["IdLinMenu"].')"></td>						
-				</tr>
-				<tr>
-					<td><button class="LinMenuDeleteButton" onClick="MostraEliminaTOT(1,'.$idCap.','.$row["IdLinMenu"].');"/></td>
-				</tr>
-			</table>
-		</td>
-	</tr>';
-	}
+			
+	
 
 }
 
@@ -105,17 +137,16 @@ if ($_SESSION["Creacio"]=="1")
 		
 }
 
-$resultado = $resultado . 
-		'	
-		<tr>
-			<td height="20px"></td>
-		</tr>
+if ($sub){
+			echo '</ul></li>';
+		}
 
-	</table>
-		</td>
-	</tr>
-</table>
-';
-echo $resultado;
+echo '					</ul>
+					</div>
+				</div>
+			</nav>	   
+	</nav>
+	</div>
+	</div>';
 ?>
 
