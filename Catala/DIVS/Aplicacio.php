@@ -141,7 +141,7 @@ function CarregaAplicacio()
 
 <!-- #container capÃÂ§alera -->
 <div class="container">
-    <?php MostraMenuLateralAdmin(); ?>
+    <?php MostraMenuLateralDerecho(); ?>
 
     <div class="col-md-3">
         <a href="http://www.uab.cat/">

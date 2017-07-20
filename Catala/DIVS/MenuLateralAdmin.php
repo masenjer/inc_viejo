@@ -1,5 +1,5 @@
 <?php
-function MostraMenuLateralAdmin()
+function MostraMenuLateralDerecho()
 {
     if (($_SESSION["Usuarios"] == 1)||($_SESSION["Noticias"] == 1)||($_SESSION["Creacio"] == 1)){
 ?>
