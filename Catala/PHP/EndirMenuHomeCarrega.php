@@ -9,11 +9,17 @@ session_start();
 $permiso="";
 $colsp = 5;
 
+
+echo '<h2 class="section-title" aria-level="2" role="heading">
+        Enllaços directes';
+
 if ($_SESSION["Noticias"]=="1")
 {	
-	$permiso = '<button class="EditButton" onClick="AbreGestorEnDir();"/>';
-	$colsp = 3;
+	echo  '<span class="glyphicon glyphicon-edit" aria-hidden="true" onClick="AbreGestorEnDir()"></span>';
+	
 }
+
+echo '</h2>';
 
 $SQL = "SELECT * FROM EnDirHome WHERE  IdSite =".$_SESSION["IdSite"]."  order by Orden ASC";
 $result = mysql_query($SQL,$oConn);

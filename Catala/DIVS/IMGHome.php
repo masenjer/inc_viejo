@@ -12,14 +12,16 @@ function MostraIMGHome()
             	<td align="left">
                 	<form  ENCTYPE="multipart/form-data" id="FormPujaNewIMGHome" name="FormPujaNewIMGHome" method="post" action="PHP/UploadFiles.php?op=1" target="IframePujaNewIMGHome">
             		   	<input type="file" id="NewIMGHomeName" name="NewIMGHomeName" onChange="AddNewIMGHome(this.value)" style="display:none">
-	                	<button class="PlusButton"  onClick="NewIMGHomeName.click();"></button>
+	                	
+                    <h3><span class="glyphicon glyphicon-plus-sign " aria-hidden="true" onClick="NewIMGHomeName.click();"></span></h3>
+                        
                     </form>
                     <iframe name="IframePujaNewIMGHome" style="display:none"></iframe>  
                 </td>
             </tr>
             <tr>
             	<td>
-                	<div id="DIVIdGestioIMGHome" style="height:250px; overflow-x:auto; overflow-y:hidden; max-width:655px;	"></div>
+                	<div id="DIVIdGestioIMGHome" style="height:250px; overflow-x:auto; overflow-y:hidden; max-width:100%;	"></div>
                 </td>
             </tr>
         </table>

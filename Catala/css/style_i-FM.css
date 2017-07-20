@@ -7428,6 +7428,40 @@ a:focus {
     line-height: 1;
     font-size: 18.5px;
   }
+
+  .header .navbar-nav > li > div {
+    font-weight: bold;
+    padding: 0 10px 0 10px;
+    border-right: 1px solid #939598;
+    color: #000;
+    line-height: 1;
+    font-size: 18.5px;
+  }
+
+  .header .navbar-nav > li >  h3 {
+    padding: 0;
+    margin:0;
+  }
+
+.header .navbar-nav > li > div > div  {
+   
+    font-size: 12px;
+  }
+
+ .header .navbar-nav .eines {
+    font-weight: bold;
+    padding: 0 10px 0 10px;
+    border-right: 0;
+    color: #000;
+    line-height: 1;
+    font-size: 18.5px;
+  }
+
+  .header .navbar-nav .eines h3 {
+    padding: 0;
+    margin:0;    
+  }
+
   .header .navbar-nav > li > a:hover {
     background-color: transparent;
     color: #a81f24;
@@ -7439,6 +7473,10 @@ a:focus {
 }
 @media (min-width: 1200px) {
   .header .navbar-nav > li > a {
+    font-size: 23px;
+    line-height: 1;
+  }
+  .header .navbar-nav > li > div {
     font-size: 23px;
     line-height: 1;
   }
@@ -8423,11 +8461,26 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   font-weight: bold;
   margin: 10px 0 10px 0;
 }
+.section-title h3{
+  display: inline;
+  margin:0;
+}
 @media (min-width: 992px) {
   .section-title {
     margin: 0 0 12px 0;
   }
+
+  .section-title h3{
+  display: inline;
+  margin:0;
 }
+}
+
+.section-title h3{
+  display: inline;
+  margin:0;
+}
+
 .section-title .section-subtitle {
   font-size: 16px;
 }
@@ -14349,5 +14402,60 @@ form.mona input.caixa:focus {
 }
 #ite .visualitza a:hover {
   text-decoration: underline;
+}
+
+
+/* Buttons*/
+
+.glyphicon{
+  cursor:pointer;
+}
+
+.glyphicon-plus-sign:hover{
+  color:#33AA33;
+}
+
+
+.glyphicon-remove-sign:hover{
+  color:#CC3333;
+}
+
+.glyphicon-edit:hover{
+  color:#AA6600;
+}
+
+.glyphicon-user:hover{
+  color:#0099FF
+}
+
+.glyphicon-off:hover{
+  color:#CC3333;
+}
+
+.glyphicon-eye-open:hover{
+  color:#9955AA;
+}
+
+.eines h3{
+  padding:0;
+  margin:0;
+}
+
+.buttons_img_home .glyphicon{
+  color:#fff;
+  /*background: #000;*/
+}
+
+.buttons_img_home .glyphicon-remove-sign:hover{
+  color:#CC3333;
+}
+
+
+.buttons_img_home .glyphicon-circle-arrow-left:hover{
+  color:#000;
+}
+
+.buttons_img_home .glyphicon-circle-arrow-right:hover{
+  color:#000;
 }
 /* media querys */

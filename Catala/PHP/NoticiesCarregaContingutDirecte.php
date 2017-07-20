@@ -6,11 +6,17 @@ include("PHP/Fechas.php");
 session_start();
 
 
+	echo '<div class="col-md-12">
+		<h2 class="section-title" aria-level="2" role="heading"> Notícies ';
+    
+
 	
 	if ($_SESSION["Noticias"]=="1")
 	{	
-		$resultado = '<button class="EditButton" onClick="AbreGestorNoticias();"> </button>';
+		echo '<span class="glyphicon glyphicon-edit" aria-hidden="true" 	onClick="AbreGestorNoticias()"></span>';
 	}
+
+	echo '</h2></div>';
 	
 
 

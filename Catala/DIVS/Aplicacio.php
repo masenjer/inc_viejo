@@ -140,7 +140,9 @@ function CarregaAplicacio()
 
 
 <!-- #container capÃÂ§alera -->
-<div class="container">      
+<div class="container">
+    <?php MostraMenuLateralAdmin(); ?>
+
     <div class="col-md-3">
         <a href="http://www.uab.cat/">
             <span class="ico logo hidden-xs hidden-sm" aria-hidden="true"></span>
@@ -152,6 +154,7 @@ function CarregaAplicacio()
             
         
     <div class="col-md-9">
+
         <nav id="navegacio" aria-label="Vés a la navegació de Facultat de Medicina" role="navigation">
             <ul class="nav navbar-nav navbar-right"><?php include ("PHP/MenuSCarregaDirecte.php"); ?> </ul>
         </nav>

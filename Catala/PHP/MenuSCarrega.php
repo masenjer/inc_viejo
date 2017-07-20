@@ -34,25 +34,26 @@ if (!$direccion) $direccion = 'index.php#!/MS_'.$row["IdCapMenu"];
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	$resultado = $resultado . '
+	echo  '
 	
 		<li class="dropdown">
 			<input type="hidden" id="tdMSAntic'.$row["IdCapMenu"].'" value="'.$row["Titol"].'">
 		';
 		
-	$resultado = $resultado . '  
+	echo  '  
 		
-			
+		<div id="tdMS'.$row["IdCapMenu"].'">
 			<a href="'.$direccion.'">
-				'.$row["Titol"].'
+				<div id="DIVTitolMS'.$row["IdCapMenu"].'" class="DIVMenuS">'.$row["Titol"].'</div>
 			</a>
+		</div>	
 			
-			
+
 		';	
-		
+	
 	if ($_SESSION["Creacio"]=="1")
 	{
-		$resultado = $resultado . '<td style="vertical-align:middle;"> 
+		echo '<td style="vertical-align:middle;"> 
 			<table height="32px" cellpadding="0" cellspacing="0" border="0" >
 				<tr>
 					<td height="17px" valign="top"><button class="EditButton" onClick="EditaTitolMS('.$row["IdCapMenu"].')"/></td>
@@ -67,7 +68,7 @@ if (!$direccion) $direccion = 'index.php#!/MS_'.$row["IdCapMenu"];
 	';
 	}
 	
-	$resultado.= '		</li>';
+	echo '		</li>';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /* 
@@ -83,7 +84,7 @@ if (!$direccion) $direccion = 'index.php#!/MS_'.$row["IdCapMenu"];
 		$stilo = 'style="background-image:URL(img/CapcaRelleu2.png);"';	
 	}
 
-	$resultado = $resultado . '
+	echo  '
 		<td bgcolor="#333333" class="ButtonMS" '.$stilo.'  height="28px" id="tdMS'.$row["IdCapMenu"].'"  align="left">
 			<a href="index.php#!/MS_'.$row["IdCapMenu"].'" '.$DobleClic.'>
 			<input type="hidden" id="tdMSAntic'.$row["IdCapMenu"].'" value="'.$row["Titol"].'">
@@ -98,7 +99,7 @@ if (!$direccion) $direccion = 'index.php#!/MS_'.$row["IdCapMenu"];
 
 mysql_close($oConn);
 
-$resultado = $resultado . '
+echo  '
 		<li>
 			<a href="Directori.php">
 			Directori INc
@@ -113,7 +114,7 @@ $resultado = $resultado . '
 
 
 /*///Botó del publicacions	
-		$resultado = $resultado . '
+		echo  '
 		<td bgcolor="#333333" class="ButtonMS" '.$stilo.'  height="28px" id="tdMSPublicacions" onClick="MostraPublicacions();" align="left">
 			<div id="DIVTitolMSPublicacions" class="DIVMenuS">Publicacions</div>
 		</td>
@@ -129,21 +130,21 @@ $resultado = $resultado . '
 		
 if ($_SESSION["Creacio"]=="1")
 {
-	$resultado .= 	'
+	echo 	'
 		<button class="PlusButton" onclick="NovaMS();"/>';
 }
 
 if ($_SESSION["Usuarios"]=="1")
 {
-	$resultado .= 	'<button class="GUButton" onclick="MostraGestioGU();"/>';
+	echo 	'<button class="GUButton" onclick="MostraGestioGU();"/>';
 }
 
-$resultado .= '</table>
+echo '</table>
 			</td>';
 
 	
 			
-		$resultado .= '
+		echo '
 		</tr>
 	</table>
 
@@ -154,5 +155,5 @@ $resultado .= '</table>
 /////////////////////////////////////////////////////Boton nou MS i GU	
 
 
-echo $resultado;
+
 ?>

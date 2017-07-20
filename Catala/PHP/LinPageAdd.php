@@ -9,7 +9,7 @@ $IdLin = $_GET["IdLin"];
 
 $Orden = 0;
 
-$SQL = "SELECT Orden from LinMenu WHERE IdSite =".$_SESSION["IdSite"]." AND IdCapMenu = " . $idCap . " AND Tipus <>2 ORDER By Orden Desc LIMIT 1" ;
+$SQL = "SELECT Orden from LinMenu WHERE IdSite =".$_SESSION["IdSite"]." AND IdCapMenu = " . $idCap . "  AND IdLinMenuRel = ".$IdLin." AND Tipus <>2 ORDER By Orden Desc LIMIT 1" ;
 $result = mysql_query($SQL,$oConn);
 
 while ($row = mysql_fetch_array($result))

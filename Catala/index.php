@@ -21,7 +21,7 @@ $_SESSION["IdSite"] = 0;
 <?php include_once("../analyticstracking.php") ?>
 
 <?php 
-	MostraMenuLateralDerecho();
+	//MostraMenuLateralDerecho();
 	MostraMenuColor();
 ?>
 

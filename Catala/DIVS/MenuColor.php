@@ -3,7 +3,7 @@ function MostraMenuColor()
 {
 ?>
 
-<div id="MenuColor" style="position:fixed; display:none; border-style:solid; border-color:#222222;border-width:1px;">
+<div id="MenuColor" style="position:fixed; display:none; border-style:solid; border-color:#222222;border-width:1px; z-index:10000; background: #FFF">
 <table width="105px" height="145px"  cellpadding="0" cellspacing="0" border="0" bgcolor="#666666">
 	<tr>
     	<td class="TitolHome"  style="width:105px;height:25px;" colspan="3" align="left" >

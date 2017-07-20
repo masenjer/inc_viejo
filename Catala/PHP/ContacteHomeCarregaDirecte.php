@@ -10,18 +10,12 @@ $colsp=5;
 
 
 
-if ($_SESSION["Noticias"]=="1")
-{	
-	$resultado.= '<button class="EditButton" onClick= "CarregaContacteEdicio();"></button>';
-	$colsp = 3;
-}
+
 
 
 $SQL = "SELECT * FROM Contacte WHERE  IdSite =".$_SESSION["IdSite"]." ";
 $result = mysql_query($SQL,$oConn);
 
-
-	
 
 
 while ($row = mysql_fetch_array($result))
@@ -29,8 +23,34 @@ while ($row = mysql_fetch_array($result))
 	$accion = ' onClick="CarregaEnllacIntern(\''.$row["URL"].'\');"'; 
 	 
 	$resultado = $resultado . '
+				';
+
+	if ($_SESSION["Noticias"]=="1")
+{	
+	$resultado.= '
+		<div class="row block-title">
+			<div class="col-md-10">
 				<h2 class="block-title" role="heading" aria-level="2">'.$row["Titol"].'</h2>
-							
+			</div>
+			<div class="col-md-2">
+				<h3 ><span class="glyphicon glyphicon-edit" aria-hidden="true" 	onClick="CarregaContacteEdicio()"></span></h3>
+			</div>
+		</div>
+		';
+	
+	$colsp = 3;
+}else{
+	$resultado.= '
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="block-title" role="heading" aria-level="2">'.$row["Titol"].'</h2>
+			</div>
+			
+		</div>
+		';
+}		
+
+	$resultado .= '
 				<aside class="content-avisos">'.$row["Contingut"].'</aside>';
 
 				/*

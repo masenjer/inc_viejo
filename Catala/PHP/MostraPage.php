@@ -40,6 +40,7 @@ while ($row = mysql_fetch_array($result))
 	$TitolCap = $row["Titol"];
 }
 
+
 mysql_close($oConn);
 
 
@@ -47,7 +48,17 @@ if ($_GET["op"] == "1")
 {
 	if ($Id != '84')
 	{
-		$Ruta = '<a href onclick="MostraHome();">Inici</a>> '.$TitolCap." > ".BuscaRuta($id);
+		$Ruta = '
+
+		<ul class="breadcrumb"> 
+			<li>
+				<a href="index.php">Inici</a>
+			</li> 
+			<li>
+				<a href="#!/MS_'.$IdCap.'">'.$TitolCap.'</a>
+			</li>
+			'.BuscaRuta($id).
+		'</ul>';
 	}
 	else
 	{
@@ -70,11 +81,17 @@ function BuscaRuta($IdLin)
 	{
 		if ($row["IdLinMenuRel"] == 0)
 		{
-			return '<b>'.$row["Titol"].'</b>';
+			return '
+				<li>
+					<a href="#!/'.$row["Titol"].'_'.$IdLin.'_1">'. $row["Titol"].'</a>
+				</li>';
 		}
 		else
 		{
-			return BuscaRuta($row["IdLinMenuRel"])." > ". $row["Titol"];
+			return BuscaRuta($row["IdLinMenuRel"]).'
+				<li>
+					<a href="#!/'.$row["Titol"].'_'.$IdLin.'_1">'. $row["Titol"].'</a>
+				</li>';
 		}
 	}
 	mysql_close($oConn);

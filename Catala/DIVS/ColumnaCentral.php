@@ -3,13 +3,22 @@ function MostraColumnaCentral()
 {
 ?>
 <div id="main" class="content">
-    <DIV id="DIVRutaPage" ></DIV>
     
     <div class="contingut width-adjust">
-        <h2 id="DIVTitolPage" class="section-title col-xs-12 margin-top " aria-level="2" role="heading"></h2>
-        <DIV align="right" id="DIVButtonEditContingut" style="display:none;">
-            <input type="button" id="ButtonEditContingut" />
-        </DIV>
+        <h2>
+        <h2  class="section-title margin-top " aria-level="2" role="heading">
+            <?php if ($_SESSION["Edicio"]=="1")
+            {
+                ?>
+            <span id="ButtonEditContingut" style="float:right;" class="glyphicon glyphicon-edit" aria-hidden="true" onClick="ButtonEditContingut()"></span>
+            
+            <?php
+        }
+        ?>
+            <section id="DIVTitolPage"></section>
+            
+        </h2>  
+        </h2>       
         <DIV id="DIVContingutPage"></DIV>
         <DIV id="DIVEditaContingutPage" style="display:none;">
                 <input id="IdLinMenuActual" type="hidden" name="IdLinMenuActual"/>

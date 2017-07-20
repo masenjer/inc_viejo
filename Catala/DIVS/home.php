@@ -89,9 +89,7 @@ function MostraPartEsquerraHome()
 ?>
 
 
-    <h2 class="section-title" aria-level="2" role="heading">
-        Noticias
-    </h2>
+    
 
     <div class="row">         
         <?php include ("PHP/NoticiesCarregaContingutDirecte.php"); ?>
@@ -107,9 +105,7 @@ function MostraPartCentralHome()
 {
 ?>
 
-    <h2 class="section-title" aria-level="2" role="heading">
-        Enllaços directes
-    </h2>
+    
 
 <div class="ContHomeListEnDir" >
     <?php include("PHP/EndirMenuHomeCarregaDirecte.php"); ?>

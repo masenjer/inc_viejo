@@ -42,29 +42,38 @@ if (!$direccion) $direccion = 'index.php#!/MS_'.$row["IdCapMenu"];
 		
 	echo  '  
 		
-			
+		<div id="tdMS'.$row["IdCapMenu"].'">
 			<a href="'.$direccion.'">
-				'.$row["Titol"].'
+				<div id="DIVTitolMS'.$row["IdCapMenu"].'" class="DIVMenuS">'.$row["Titol"].'</div>
 			</a>
+		</div>	
 			
-			
+
 		';	
-		
+	
 	if ($_SESSION["Creacio"]=="1")
 	{
-		echo  '
-			<div class="row">
-				<div class="col-md-2">
-					<button class="EditButton" onClick="EditaTitolLPage('.$row["IdLinMenu"].')"/>			
+		echo '
+
+			<div class="row eines">
+				
+				<div class="col-md-4">	
+					<h3><span class="glyphicon glyphicon-edit" aria-hidden="true" 	onClick="EditaTitolMS('.$row["IdCapMenu"].')"></span>
+					</h3>		
+				</div>
+				<div class="col-md-4">	
+					<h3><span class="glyphicon glyphicon-remove-sign" aria-hidden="true" 	onClick="MostraEliminaTOT(0,'.$row["IdCapMenu"].');"></span>
+					</h3>		
 				</div>
 				
-				<div class="col-md-2">	<input class="OrdenML" type="text"  id="OrdenME'.$row["IdLinMenu"].'" value="'.$row["Orden"].'"  onKeyPress="submitenter(5,event,'.$row["IdLinMenu"].');" >
-				</div>
-				<div class="col-md-2">
-					<button class="LinMenuDeleteButton" onClick="MostraEliminaTOT(1,'.$idCap.','.$row["IdLinMenu"].');"/>
+				<div class="col-md-4">	
+					<input class="OrdenML" type="text"  id="OrdenMS'.$row["IdCapMenu"].'" value="'.$row["Orden"].'"  style="vertical-align:bottom" onKeyPress="submitenter(6,event,'.$row["IdCapMenu"].')">
 				</div>
 			</div>
-	';
+	
+			
+		';
+
 	}
 	
 	echo '		</li>';
@@ -130,25 +139,15 @@ echo  '
 if ($_SESSION["Creacio"]=="1")
 {
 	echo 	'
-		<button class="PlusButton" onclick="NovaMS();"/>';
+		<li><h3><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"  onclick="NovaMS();"></span></h3></li>';
 }
 
 if ($_SESSION["Usuarios"]=="1")
 {
-	echo 	'<button class="GUButton" onclick="MostraGestioGU();"/>';
+	//echo 	'<li><h3><span class="glyphicon glyphicon-user" aria-hidden="true"  onclick="MostraGestioGU();"></span></h3></li>';
 }
 
-echo '</table>
-			</td>';
-
-	
-			
-		echo '
-		</tr>
-	</table>
-
-	
-	<input type="hidden" id="CuentaMS" value="'.$cuenta.'">';
+echo '<input type="hidden" id="CuentaMS" value="'.$cuenta.'">';
 	
 
 /////////////////////////////////////////////////////Boton nou MS i GU	

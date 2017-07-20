@@ -78,7 +78,7 @@ if ($_SESSION["Creacio"]=="1")
 	'	
 		<ul class>
 			<li class="text-center">
-				<h2><span class="glyphicon glyphicon-plus glybutton" aria-hidden="true" onClick="NovaLPage('.$idCap.',0)"></span>
+				<h2><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" onClick="NovaLPage('.$idCap.',0)"></span>
 </h2>
 				
 			</li>
@@ -114,21 +114,24 @@ function LinMenuRecursivo($idCap,$idRel){
 		{
 			$accion = '
 
-				<div class="row">
-					<div class="col-md-2">	
-						<h4><span class="glyphicon glyphicon-plus glybutton" aria-hidden="true" 	onClick="NovaLPage('.$idCap.',0,'.$row["IdLinMenu"].')"></span>
-						</h4>		
+				<div class="row eines">
+					<div class="col-md-3">	
+						<h3>
+							<span class="glyphicon glyphicon-plus-sign " aria-hidden="true" 	onClick="NovaLPage('.$idCap.','.$row["IdLinMenu"].')"></span>
+						</h3>		
 					</div>
-					<div class="col-md-2">	
-						<h4><span class="glyphicon glyphicon-pencil glybutton" aria-hidden="true" 	onClick="EditaTitolLPage('.$row["IdLinMenu"].')"></span>
-						</h4>		
+					<div class="col-md-3">	
+						<h3>
+							<span class="glyphicon glyphicon-edit " aria-hidden="true" 	onClick="EditaTitolLPage('.$row["IdLinMenu"].')"></span>
+						</h3>		
 					</div>
-					<div class="col-md-2">	
-						<h4><span class="glyphicon glyphicon-remove glybutton" aria-hidden="true" 	onClick=""MostraEliminaTOT(1,'.$idCap.','.$row["IdLinMenu"].');"></span>
-						</h4>		
+					<div class="col-md-3">	
+						<h3>
+							<span class="glyphicon  glyphicon-remove-sign " aria-hidden="true" 	onClick="MostraEliminaTOT(1,'.$idCap.','.$row["IdLinMenu"].');"></span>
+						</h3>		
 					</div>
 					
-					<div class="col-md-2">	<input class="OrdenML" type="text"  id="OrdenME'.$row["IdLinMenu"].'" value="'.$row["Orden"].'"  onKeyPress="submitenter(5,event,'.$row["IdLinMenu"].');" >
+					<div class="col-md-3">	<input class="OrdenML" type="text"  id="OrdenME'.$row["IdLinMenu"].'" value="'.$row["Orden"].'"  onKeyPress="submitenter(5,event,'.$row["IdLinMenu"].');" >
 					</div>
 				</div>
 		
@@ -148,7 +151,7 @@ function LinMenuRecursivo($idCap,$idRel){
 				<li class="sub">
 			
 				<a href="#collapse'.$row["IdLinMenu"].'_deep" data-toggle="collapse" data-parent="#collapse'.$idRel.'_deep" aria-expanded="false" class="collapsed">
-					<div id="tdME'.$row["IdLinMenu"].'" onclick="Redirect(\'index.php#!/'.$row["Titol"].'_'.$row["IdLinMenu"].'_1\');">
+					<div id="tdME'.$row["IdLinMenu"].'" onclick="MostraPage('.$row["IdLinMenu"].',1);">
 					
 						<div id="DIVTitolLPage'.$row["IdLinMenu"].'">'.$row["Titol"].'</div>
 					
@@ -173,10 +176,23 @@ function LinMenuRecursivo($idCap,$idRel){
 		}else{
 			$resultado .= '  
 				<li  class="no-sub">
+					<a href = "javascript:void(0);" onclick="MostraPage('.$row["IdLinMenu"].',1);">
+						<div id="tdME'.$row["IdLinMenu"].'"><div id="DIVTitolLPage'.$row["IdLinMenu"].'">'.$row["Titol"].'</div></div>
+					</a>'.$accion.'
+				</li>';
+
+				/*
+				Con href a ruta
+
+				$resultado .= '  
+				<li  class="no-sub">
 					<a href = "index.php#!/'.$row["Titol"].'_'.$row["IdLinMenu"].'_1">
 						<div id="tdME'.$row["IdLinMenu"].'"><div id="DIVTitolLPage'.$row["IdLinMenu"].'">'.$row["Titol"].'</div></div>
 					</a>'.$accion.'
 				</li>';
+
+
+				*/
 
 		}	
 
@@ -189,7 +205,7 @@ function LinMenuRecursivo($idCap,$idRel){
 <script>
 	function Redirect(URL){
 		//alert(URL);
-		//window.location.href = URL;
+		MostraPage(id);
 	}
 </script>
 

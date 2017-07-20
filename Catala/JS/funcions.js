@@ -205,8 +205,12 @@ function MostraPage(id,op)
 
 function LlegadaMostraPage(data)
 {
+	//alert("caca");
+
 	var cadena = data.split("|");
 	
+	//console.log(cadena);
+
 	$('#DIVTitolPage').html("");	
 	$('#DIVTitolPage').html(cadena[0]);	 
 
@@ -231,6 +235,8 @@ function LlegadaMostraPage(data)
 	$("#ContingutPages").fadeIn(1000);
 	
 	//MEnuECarrega(cadena[5]);
+
+	//history.pushState(null, "", 'index.php#!/'.$row["Titol"].'_'.$row["IdLinMenu"].'_1');
 	
 	document.getElementById("ButtonEditContingut").onclick =  function (){MostreEditContingut(cadena[3])};
 	document.getElementById("ButtonCancelaContingut").onclick =  function (){CancelaEditCont(cadena[3])};
@@ -242,7 +248,8 @@ function LlegadaMostraPage(data)
 		var idop= cadena[3].split(",");	
 		var TitolHash = replaceAll(cadena[0], " ", "-" ); //.replace(" ","");
 			TitolHash = replaceAll(TitolHash, "'", "" ); //.replace(" ","");
-		//window.location.hash = "!/"+TitolHash+"_"+idop[0]+"_"+idop[1];
+		//window.location.hash = ";
+		history.pushState(null,"", "#!/"+TitolHash+"_"+idop[0]+"_"+idop[1]);
 	}
 }
 

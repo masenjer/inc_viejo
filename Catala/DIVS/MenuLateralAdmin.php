@@ -1,8 +1,27 @@
 <?php
-function MostraMenuLateralDerecho()
+function MostraMenuLateralAdmin()
 {
+    if (($_SESSION["Usuarios"] == 1)||($_SESSION["Noticias"] == 1)||($_SESSION["Creacio"] == 1)){
 ?>
 
+<div class="row align-right">
+    <div class="col-xs-12 text-right">
+        <h3>
+<?php 
+        if ($_SESSION["Usuarios"]=="1"){
+?>
+            <span class="glyphicon glyphicon-user" aria-hidden="true"  onclick="MostraGestioGU();"></span>
+<?php
+}
+?>
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true" onClick="MostraMenuColor();"></span>
+            <span class="glyphicon glyphicon-off" aria-hidden="true" onClick="TancaSessio();"></span>
+
+        </h3>
+    </div>
+</div>
+
+<!--
 <div id="MenuLateralAdmin" style="position:fixed; display:none; ">
 <table width="73px" cellpadding="0" cellspacing="0" border="0">
 	<tr>
@@ -28,6 +47,9 @@ $("#MenuLateralAdmin").css("left",pos);
 $("#MenuLateralAdmin").css("top","25px");
 
 </script>
+
+-->
 <?php
+    }
 }
 ?>

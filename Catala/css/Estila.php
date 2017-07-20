@@ -10,28 +10,6 @@
 		$colorRGB = hex2rgb($color);
 	}
 ?>
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-html{
-	margin:0;
-    overflow-x: hidden;
-    }
-body{ 
-	font-family: Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    line-height: 1.42857143;
-    color: #333333;
-}
 
 
 #TableOmbres{
@@ -229,13 +207,7 @@ width: 200px;
 	color:#666;
 }
 
-#DIVRutaPage
-{
-	font-family: 'Pavanam', sans-serif;
-	font-size:13px;	
-	color:#999;
-    text-align:right;
-}
+
 
 .fuenteCercador
 {
@@ -254,14 +226,7 @@ width: 200px;
 	font-weight:bold;
 }
 
-#ButtonEditContingut
-{
-	width:32px;
-	height:32px;
-	border:0;
-	background:url(../img/ButtonEditContingut.png);
-	cursor:pointer;
-}
+
 
 #TAContingut
 {
@@ -806,12 +771,13 @@ a:visited.OpcionsContingut
 }
 
 .OrdenML{
-	width:16px; 
-	height:32px; 
+	width:23px; 
+	height:23px; 
 	vertical-align:middle;
-	padding:0;
+	padding:2px;
 	margin:0;
 	border:1px solid #bbb;	
+	text-align:center;
 }
 
 
@@ -1175,55 +1141,6 @@ a:visited.OpcionsContingut
 }
 
 
-
-.h1{
-	color:#333;<?php //echo $color; ?>;
-   	
-	font-size:70px;	
-    text-align:center;
-    width:100%;
-}
-
-h1{
-	color:<?php echo $color; ?>;
-   	
-	font-size:24px;	
-    text-align:left;
-    margin:0;
-   	
-}
-
-h2{
-	color:<?php echo $color; ?>;
-   	
-	font-size:18px;	
-    text-align:left;
-}
-
-h3{
-	color:#666;
-	
-	font-size:14px;	
-	color:#666;
-    text-align:justify;
-    line-height:20px;
-}
-
-.h3{
-	color:<?php echo $color; ?>;
-   	font-family: 'Pavanam', sans-serif;
-	font-size:16px;	
-    text-align:justify;
-}
-
-.normal{
-	color:#666;
-	font-family: 'Pavanam', sans-serif;
-	font-size:14px;	
-	color:#666;
-    text-align:justify;
-    line-height:20px;
-}
 
 .normal img{
 	-moz-border-radius: 5px 5px 5px 5px;

@@ -112,15 +112,7 @@
 	cursor:pointer;
 }
 
-.EditButton{
-	width:24px;
-	height:24px;
-	background:URL(../img/ButtonEditContingut.png);
-	background-size:100% 100%;
-	border:none;
-	cursor:pointer;
-	
-}
+
 
 .LinMenuHyperlinksButton{
 	width:24px;
@@ -174,14 +166,7 @@
 	height:32px;
 }
 
-#ButtonEditContingut
-{
-	width:32px;
-	height:32px;
-	border:0;
-	background:url(../img/ButtonEditContingut.png);
-	cursor:pointer;
-}
+
 
 #ButtonNoticiaGuarda
 {
