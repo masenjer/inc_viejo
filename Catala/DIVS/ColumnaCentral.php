@@ -7,14 +7,10 @@ function MostraColumnaCentral()
     <div class="contingut width-adjust">
         <h2>
         <h2  class="section-title margin-top " aria-level="2" role="heading">
-            <?php if ($_SESSION["Edicio"]=="1")
-            {
-                ?>
-            <span id="ButtonEditContingut" style="float:right;" class="glyphicon glyphicon-edit" aria-hidden="true" onClick="ButtonEditContingut()"></span>
             
-            <?php
-        }
-        ?>
+            <span id="ButtonEditContingut" style="float:right; display:none;" class="glyphicon glyphicon-edit" aria-hidden="true" onClick="ButtonEditContingut()"></span>
+            
+            
             <section id="DIVTitolPage"></section>
             
         </h2>  

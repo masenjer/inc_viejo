@@ -5,7 +5,7 @@ function CompruebaPermisosEdicion()
 	{
 ?>
 		<script>
-			$('#DIVButtonEditContingut').show();
+			$('#ButtonEditContingut').show();
 			$('#ButtonAddDirectori').show();
 			$('#ButtonAddPublicacions').show();
         </script>
