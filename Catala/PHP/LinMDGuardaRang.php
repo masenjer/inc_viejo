@@ -6,12 +6,14 @@ $id = $_GET["id"];
 $rang = $_GET["rang"];
 
 $SQL = "UPDATE LinMD SET Orden = ".$rang." WHERE IdLinMD =" . $id;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 $SQL = "SELECT IdCapMenu from LinMD WHERE IdLinMD =" . $id;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	echo $row["IdCapMenu"];	
 }

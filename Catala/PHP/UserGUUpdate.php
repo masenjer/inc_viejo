@@ -21,12 +21,13 @@ $id = $_POST["id"];
 if ($id == "")
 {	
 	$SQL = "INSERT INTO Users(Nom, Cognoms, Email, User, Password, Usuarios, Creacio, Edicio, Noticias) VALUES ('$N','$A','$E','$U','$P',$R1,$R2,$R3,$R4)";
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	
 	$SQL2 = "SELECT IdUser FROM Users ORDER BY IdUser DESC LIMIT 1";
-	$result2 = mysql_query($SQL2,$oConn);
+	if (!$result2 = $mysqli->query($SQL2))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
 	
-	while($row = mysql_fetch_array($result2))
+	while ($row = $result2->fetch_assoc())
 	{
 		$id = $row["IdUser"]; 	
 	}
@@ -45,7 +46,8 @@ else
 				Edicio = $R3,
 				Noticias = $R4
 				WHERE IdUser = $id";
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 }
 
 echo $SQL;

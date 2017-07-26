@@ -8,10 +8,9 @@ function CS()
 	
 	$SQL = "SELECT * FROM Users where IdUser = ".$c[0]. " AND P = '". $c[1]."'" ;
 	//echo $SQL;
-	$result = mysql_query($SQL,$oConn);
-	//echo $SQL;
-	while ($row = mysql_fetch_array($result))
-	{
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+	while ($row = $result->fetch_assoc()){
+
 		return true;	
 	}
 	

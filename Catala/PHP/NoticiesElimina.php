@@ -13,7 +13,8 @@ if (CS())
 	}
 	
 	$SQL = "DELETE FROM Noticias WHERE IdNoticia =".$id;
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	
 	echo $id;
 }

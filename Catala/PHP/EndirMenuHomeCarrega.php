@@ -22,11 +22,12 @@ if ($_SESSION["Noticias"]=="1")
 echo '</h2>';
 
 $SQL = "SELECT * FROM EnDirHome WHERE  IdSite =".$_SESSION["IdSite"]."  order by Orden ASC";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 $resultado = '<ul class="fitxa-llistat">';
 
-while ($row = mysql_fetch_array($result))
+ while ($row = $result->fetch_assoc())
 {
 	$target = "";
 	
@@ -51,7 +52,7 @@ while ($row = mysql_fetch_array($result))
 	</li>';
 }
 
-mysql_close($oConn);
+ 
 
 $resultado = $resultado . '
 	

@@ -8,10 +8,11 @@ session_start();
 $cuenta = 1;
 
 $SQL = "SELECT * FROM CapMenu WHERE IdSite = ".$_SESSION["IdSite"]." order by Orden";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -21,9 +22,9 @@ while ($row = mysql_fetch_array($result))
 $direccion = "";
 
 $SQL2 = "SELECT * FROM LinMenu WHERE IdCapMenu = ".$row["IdCapMenu"]." and tipus = 1 order by Orden ASC LIMIT 1";
-$result2 = mysql_query($SQL2,$oConn);
+if (!$result2 = $mysqli->query($SQL2))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
 
-while ($row2 = mysql_fetch_array($result2))
+while ($row2 = $result2->fetch_assoc())
 {
 	$direccion = 'index.php#!/'.$row2["Titol"].'_'.$row2["IdLinMenu"].'_1';
 }
@@ -105,7 +106,7 @@ if (!$direccion) $direccion = 'index.php#!/MS_'.$row["IdCapMenu"];
 */
 }
 
-mysql_close($oConn);
+ 
 
 echo  '
 		<li>

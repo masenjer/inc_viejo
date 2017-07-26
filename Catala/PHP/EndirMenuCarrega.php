@@ -4,12 +4,13 @@ include("../rao/PonQuita.php");
 session_start();
 
 $SQL = "SELECT IdEnDirHome, Titol, Orden FROM EnDirHome WHERE IdSite =".$_SESSION["IdSite"]."  order by Orden ASC";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 $resultado = '
 <table width="100%"  cellpadding="0" cellspacing="0" border="0" class="fuenteLinNoticia">';
 
-while ($row = mysql_fetch_array($result))
+ while ($row = $result->fetch_assoc())
 {
 	$resultado = $resultado . '
 	<tr valign="middle">
@@ -20,7 +21,7 @@ while ($row = mysql_fetch_array($result))
 	</tr>';
 }
 
-mysql_close($oConn);
+ 
 
 $resultado = $resultado . '	
 </table>';

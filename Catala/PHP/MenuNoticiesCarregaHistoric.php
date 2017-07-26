@@ -4,12 +4,13 @@ include("../rao/PonQuita.php");
 session_start();
 
 $SQL = "SELECT IdNoticia, Titol, Rang FROM Noticias WHERE IdSite =".$_SESSION["IdSite"]." AND Rang is NULL order by FechaNot DESC";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 $resultado = '
 <table width="100%"  cellpadding="10" cellspacing="0" border="0" class="fuenteLinNoticia">';
 
-while ($row = mysql_fetch_array($result))
+ while ($row = $result->fetch_assoc())
 {
 	$resultado = $resultado . '
 	<tr valign="middle">
@@ -22,7 +23,7 @@ while ($row = mysql_fetch_array($result))
 	</tr>';
 }
 
-mysql_close($oConn);
+ 
 
 $resultado = $resultado . '	
 </table>';

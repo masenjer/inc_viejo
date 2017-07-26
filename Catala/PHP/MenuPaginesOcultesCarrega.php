@@ -14,7 +14,8 @@ if ($_SESSION["Creacio"]=="1")
 	
 	
 	$SQL = "SELECT * FROM LinMenu WHERE IdSite =".$_SESSION["IdSite"]." AND Tipus = 2  order by orden";
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	
 	$resultado = '
 	<table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -27,7 +28,7 @@ if ($_SESSION["Creacio"]=="1")
 	</table>
 	<table width="100%"  cellpadding="0" cellspacing="0" border="0" class="fuenteMenuPageOculta" id="fuenteMenuPageOculta">';
 	
-	while ($row = mysql_fetch_array($result))
+	 while ($row = $result->fetch_assoc())
 	{
 		if ($_SESSION["Creacio"]=="1")
 		{
@@ -80,7 +81,7 @@ if ($_SESSION["Creacio"]=="1")
 	
 	}
 	
-	mysql_close($oConn);
+	 
 	
 	
 			

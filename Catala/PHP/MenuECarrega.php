@@ -14,8 +14,9 @@ $idCap = $_GET["n"];
 $sub = false;
 
 $SQL = "SELECT Titol FROM CapMenu WHERE IdSite =".$_SESSION["IdSite"]." AND IdCapMenu = ".$idCap;
-$result = mysql_query($SQL,$oConn);
-while ($row = mysql_fetch_array($result))
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
+ while ($row = $result->fetch_assoc())
 {
 	$TitolCap = $row["Titol"];
 }
@@ -60,7 +61,7 @@ echo '
 
 echo LinMenuRecursivo($idCap,0);
 
-mysql_close($oConn);
+ 
 
 	
 
@@ -106,9 +107,10 @@ function LinMenuRecursivo($idCap,$idRel){
 	$SQL = "SELECT * FROM LinMenu WHERE IdSite =".$_SESSION["IdSite"]." AND IdCapMenu = ".$idCap." AND IdLinMenuRel = ".$idRel." AND Tipus = 1  order by orden";
 
 	//if ($idRel !== 0) echo $SQL;
-	$result = mysql_query($SQL,$oConn);	
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+	
 
-	while ($row = mysql_fetch_array($result))
+	 while ($row = $result->fetch_assoc())
 	{
 		if ($_SESSION["Creacio"]=="1")
 		{

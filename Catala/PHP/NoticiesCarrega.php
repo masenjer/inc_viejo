@@ -7,9 +7,10 @@ $id = $_GET["Id"];
 if ($id != "")
 {
 	$SQL = "SELECT * FROM Noticias WHERE IDSite = ".$_SESSION["IdSite"]." AND IdNoticia = ".$id;
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	
-	while ($row = mysql_fetch_array($result))
+	 while ($row = $result->fetch_assoc())
 	{
 		$T = $row["Titol"];
 		$C = $row["Cos"];
@@ -21,7 +22,7 @@ if ($id != "")
 	}
 }
 
-mysql_close($oConn);
+ 
 
 echo $T."|".$C."|".$F."|".$FP."|".$FD."|".$id."|".$IMG."|".$NOU;
 

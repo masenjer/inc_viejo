@@ -2,14 +2,13 @@
 include("rao/sas_con.php");
 
 $SQL = "SELECT * FROM Web ";
-$result = mysql_query($SQL,$oConn);
- 
-while ($row = mysql_fetch_array($result)){
+
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+while ($row = $result->fetch_assoc()){
 	
 	$_SESSION["WebColor"]=$row["WebColor"];
 	$_SESSION["ButtonsColor"]=$row["ButtonsColor"];
 }
 
-mysql_close($oConn);
 
 ?>

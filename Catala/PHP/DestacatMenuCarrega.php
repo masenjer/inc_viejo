@@ -6,7 +6,6 @@ session_start();
 
 
 $SQL = "SELECT * FROM Destacat WHERE IdSite =".$_SESSION["IdSite"]." order by Orden ASC";
-$result = mysql_query($SQL,$oConn);
 
 $resultado = '
 <table width="100%"  cellpadding="0" cellspacing="0" border="0" class="fuenteLinNoticia">';
@@ -16,8 +15,9 @@ $resultado = '
 		$resultado = $resultado.'<tr><td align="right" height="25px"><button class="EditButton" onClick="AbreGestorDestacats();"></td></tr><tr>';
 	}
 
-while ($row = mysql_fetch_array($result))
-{
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+while ($row = $result->fetch_assoc()){
+
 	$resultado = $resultado . '
 	<tr valign="middle">';
 
@@ -34,8 +34,10 @@ while ($row = mysql_fetch_array($result))
 			$cadena = explode("|",$row["URL"]);
 			
 			$SQLNom = "SELECT Titol FROM LinMenu WHERE IdLinMenu = ".$cadena[1];
-			$resultNom = mysql_query($SQLNom,$oConn); 
-			while ($rowNom = mysql_fetch_array($resultNom)){
+			
+			if (!$resultNom = $mysqli->query($SQLNom))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+			while ($rowNom = $resultNom->fetch_assoc()){
+			
 				$TitolNom = $rowNom["Titol"];
 			}			
 			
@@ -73,7 +75,6 @@ while ($row = mysql_fetch_array($result))
 //	}
 }
 
-mysql_close($oConn);
 
 
 $resultado = $resultado . '<tr><td height="15px"></td></tr>';

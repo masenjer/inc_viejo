@@ -15,17 +15,19 @@ if ($op == 0)
 	$nOrden = $orden + 1;
 }
 
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$SQL2 = "UPDATE IMGHome SET Orden = ".$orden." WHERE IdIMGHome = ".$row["IdIMGHome"];
-	$result2 = mysql_query($SQL2,$oConn);
+	if (!$result2 = $mysqli->query($SQL2))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
 
 }
 	
 $SQL = "UPDATE IMGHome SET Orden = ".$nOrden." WHERE IdIMGHome = ".$id;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 
 ?>

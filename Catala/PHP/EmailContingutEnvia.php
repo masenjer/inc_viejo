@@ -18,9 +18,10 @@ switch($op)
 
 /////Primero compruebo que no se trate de un nodo padre
 
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$Titol = $row["Titol"];
 	$Titol = Quita($Titol);

@@ -2,7 +2,6 @@
 include("../rao/sas_con.php");
 
 $SQL = "SELECT * FROM Users";
-$result = mysql_query($SQL,$oConn);
 
 $resultado = '
 <input type="hidden" id="LineaGridActiu">
@@ -19,7 +18,8 @@ $resultado = '
 
 $i = 0;
 
-while ($row = mysql_fetch_array($result))
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+while ($row = $result->fetch_assoc())
 {
 	if (($i % 2)!=0)
 	{
@@ -108,7 +108,7 @@ $resultado = $resultado.'
 		</tr>
 	</table>';
 
-mysql_close($oConn);
+// 
 
 //echo $T."|".$C."|".$F."|".$FP."|".$FD."|".$id;
 echo $resultado;

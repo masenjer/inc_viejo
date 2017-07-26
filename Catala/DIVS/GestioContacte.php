@@ -2,7 +2,7 @@
 function MostraGestioContacte()
 {
 ?>
-<div id="DIVGestioContacte" style=" position:fixed; top:0; left:0; width:100%; height:100%;  background:url(img/NegroTrans.png); display:none;" >
+<div id="DIVGestioContacte" style=" position:fixed; top:0; left:0; width:100%; height:100%;  background:url(img/NegroTrans.png); display:none; z-index:1000;" >
 <input type="hidden" id="IdContacte" />
 
 <table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0">

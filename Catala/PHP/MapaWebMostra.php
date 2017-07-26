@@ -4,27 +4,28 @@ include("rao/sas_con.php");
 session_start();
 
 $SQL = "SELECT IdCapMenu, Titol FROM CapMenu WHERE IdSite = ".$_SESSION["IdSite"];
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 $primer = true;
 $border_left = "";
 
-$numRows = mysql_num_rows($result);
+$numRows = $result->num_rows;
 
 $num_cols = 12/$numRows;
 
 echo '
 	<ul>';
 
-while ($row = mysql_fetch_array($result))
+ while ($row = $result->fetch_assoc())
 {
 
 	$direccion = "";
 
 	$SQL2 = "SELECT * FROM LinMenu WHERE IdCapMenu = ".$row["IdCapMenu"]." and tipus = 1 order by Orden ASC LIMIT 1";
-	$result2 = mysql_query($SQL2,$oConn);
+	if (!$result2 = $mysqli->query($SQL2))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
 
-	while ($row2 = mysql_fetch_array($result2))
+	while ($row2 = $result2->fetch_assoc())
 	{
 		$direccion = 'index.php#!/'.$row2["Titol"].'_'.$row2["IdLinMenu"].'_1';
 	}
@@ -44,9 +45,9 @@ while ($row = mysql_fetch_array($result))
 				
 
 	$SQL2 = "SELECT * FROM LinMenu WHERE IdCapMenu = ".$row["IdCapMenu"]." AND LinMenu.Tipus <>2 order by orden";
-	$result2 = mysql_query($SQL2,$oConn);
+	if (!$result2 = $mysqli->query($SQL2))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
 	
-	while ($row2 = mysql_fetch_array($result2))
+	while ($row2 = $result2->fetch_assoc())
 	{
 		echo '
 				<li>
@@ -67,6 +68,6 @@ while ($row = mysql_fetch_array($result))
 
 echo '</ul>';
 
-mysql_close($oConn);
+ 
 
 ?>

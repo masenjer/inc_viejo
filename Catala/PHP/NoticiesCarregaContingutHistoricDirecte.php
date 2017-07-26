@@ -10,11 +10,12 @@ $today = trim(date("Y-m-d"));
 //$SQL = "SELECT * FROM Noticias WHERE FechaPub <= '$today' and FechaDesPub > '$today' ORDER BY IdNoticia DESC";
 
 $SQL = "SELECT * FROM Noticias WHERE IdSite = ".$_SESSION["IdSite"]." AND Rang is NOT NULL ORDER BY Rang ASC";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 $primera = true;
 
-while ($row = mysql_fetch_array($result))
+ while ($row = $result->fetch_assoc())
 {
 //	if (CompruebaSiPublicado($row["FechaPub"],$row["FechaDesPub"]) == 1)
 //	{
@@ -43,7 +44,7 @@ while ($row = mysql_fetch_array($result))
 	
 }
 
-mysql_close($oConn);
+ 
 
 
 

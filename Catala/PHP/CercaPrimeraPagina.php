@@ -6,13 +6,12 @@ $IdCap = $_GET["IdCap"];
 
 /////Primero compruebo que no se trate de un nodo padre
 $SQL = "SELECT * FROM LinMenu WHERE IdCapMenu = ".$IdCap." and tipus = 1 order by Orden ASC LIMIT 1";
-$result = mysql_query($SQL,$oConn);
 
-while ($row = mysql_fetch_array($result))
-{
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+while ($row = $result->fetch_assoc()){
+
 	echo $row["IdLinMenu"];
 }
 
-mysql_close($oConn);
 
 ?>

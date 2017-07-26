@@ -20,8 +20,9 @@ $_SESSION["IdSite"] = 0;
 	
 	$SQL = "SELECT Nom, Cognoms, Email, Telefon FROM Directori WHERE  IdDirectori = ".$_GET["id"];
 	
-	$result = mysql_query($SQL,$oConn);			
-	while ($row = mysql_fetch_array($result)){
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+			
+	 while ($row = $result->fetch_assoc()){
 		echo '<title>'.$row["Nom"].' '.$row["Cognoms"].'</title>';
 		echo '<meta property="description" content="Email:'.$row["Email"].', Tel.:'.$row["Telefon"].', Perfil, Recerca, Publicacions." />';
 	}

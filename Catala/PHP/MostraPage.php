@@ -16,9 +16,10 @@ switch($_GET["op"])
 
 /////Primero compruebo que no se trate de un nodo padre
 
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	
-	while ($row = mysql_fetch_array($result))
+	 while ($row = $result->fetch_assoc())
 	{
 		$Titol = $row["Titol"];
 		$Titol = Quita($Titol);
@@ -33,15 +34,16 @@ switch($_GET["op"])
 
 
 $SQL = "SELECT Titol FROM CapMenu WHERE IdCapMenu = ".$IdCap;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$TitolCap = $row["Titol"];
 }
 
 
-mysql_close($oConn);
+ 
 
 
 if ($_GET["op"] == "1")
@@ -75,9 +77,10 @@ function BuscaRuta($IdLin)
 	include("../rao/sas_con.php");
 	
 	$SQL = "SELECT Titol,IdLinMenuRel, IdCapMenu FROM LinMenu WHERE IdLinMenu = ".$IdLin;
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-	while ($row = mysql_fetch_array($result))
+
+	 while ($row = $result->fetch_assoc())
 	{
 		if ($row["IdLinMenuRel"] == 0)
 		{
@@ -94,6 +97,6 @@ function BuscaRuta($IdLin)
 				</li>';
 		}
 	}
-	mysql_close($oConn);
+	 
 }
 ?>

@@ -14,12 +14,9 @@ $colsp=5;
 
 
 $SQL = "SELECT * FROM Contacte WHERE  IdSite =".$_SESSION["IdSite"]." ";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+while ($row = $result->fetch_assoc()){
 
-
-
-while ($row = mysql_fetch_array($result))
-{
 	$accion = ' onClick="CarregaEnllacIntern(\''.$row["URL"].'\');"'; 
 	 
 	$resultado = $resultado . '
@@ -60,7 +57,6 @@ while ($row = mysql_fetch_array($result))
 				*/
 }
 
-mysql_close($oConn);
 
 
 

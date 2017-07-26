@@ -4,10 +4,10 @@ include("../rao/sas_con.php");
 $id = $_GET["id"];
 
 $SQL = "SELECT * FROM Users WHERE IdUser = ".$id;
-$result = mysql_query($SQL,$oConn);
 
-while ($row = mysql_fetch_array($result))
-{
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+while ($row = $result->fetch_assoc()){
+
 	$N = $row["Nom"];
 	$C = $row["Cognoms"];
 	$E= $row["Email"];
@@ -21,7 +21,6 @@ while ($row = mysql_fetch_array($result))
 	
 }
 
-mysql_close($oConn);
 
 echo $N."|".$C."|".$E."|".$U."|".$P."|".$R1."|".$R2."|".$R3."|".$R4."|".$id;
 

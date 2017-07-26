@@ -25,9 +25,10 @@ function MostraPublicacionsPublic($txt,$tipus)
 	{	
 		
 		$SQL = "SELECT COUNT(*) AS CuentaRows FROM Publicacions WHERE ".$cond." AND Tipus =".$t;
-		$result = mysql_query($SQL,$oConn);
+		if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 		
-		while ($row = mysql_fetch_array($result))
+		 while ($row = $result->fetch_assoc())
 		{
 			$CuentaRows = $row["CuentaRows"];
 		}
@@ -44,9 +45,10 @@ function MostraPublicacionsPublic($txt,$tipus)
 		
 		//echo $SQL;
 		$SQL = "SELECT * FROM Publicacions WHERE ".$cond." AND Tipus =".$t." ORDER BY Titol";
-		$result = mysql_query($SQL,$oConn);
+		if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 		
-		while ($row = mysql_fetch_array($result))
+		 while ($row = $result->fetch_assoc())
 		{
 			echo'
 			<tr>

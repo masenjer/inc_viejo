@@ -13,12 +13,14 @@ $cat2 = Pon($_POST["cat2"]);
 $IMG = Pon($_POST["IMG"]);
 
 $SQL = "INSERT INTO Directori(Nom, Cognoms, Despatx, Ubicacio, Telefon, Email, Imatge, IdDirectoriCategoria1, IdDirectoriCategoria2) VALUES ('".$n."','".$c."','".$d."','".$u."','".$t."','".$e."','".$IMG."','".$cat1."','".$cat2."')  ";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 $SQL = "Select IdDirectori FROM Directori ORDER BY IdDirectori DESC LIMIT 1";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$id = $row["IdDirectori"];
 }
@@ -26,7 +28,8 @@ while ($row = mysql_fetch_array($result))
 if ($IMG)
 {
 	$SQL = "UPDATE Directori SET Imatge = '".$id.$IMG."' WHERE IdDirectori = ".$id;
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 }
 
 echo $id."|".$IMG;

@@ -26,10 +26,12 @@ if (CS())
 	if ($id == "")
 	{	
 		$SQL = "INSERT INTO Noticias(Titol, Cos, FechaNot, FechaPub, FechaDesPub, Image, NOU, IdSite) VALUES ('$T','$C','$F','$FP','$FD','$IMG',$NOU,".$_SESSION["IdSite"].")";
-		$result = mysql_query($SQL,$oConn);
+		if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 		
 		$SQL = "SELECT IdNoticia FROM Noticias ORDER BY IdNoticia DESC LIMIT 1";
-		$result = mysql_query($SQL,$oConn);
+		if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 		
 		while($row = mysql_fetch_array($result))
 		{
@@ -49,7 +51,8 @@ if (CS())
 					NOU = $NOU,
 					IdSite = ".$_SESSION["IdSite"]."
 					WHERE IdNoticia = $id";
-		$result = mysql_query($SQL,$oConn);
+		if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	}
 	
 	echo $id;

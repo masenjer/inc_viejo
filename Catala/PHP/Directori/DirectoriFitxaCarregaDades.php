@@ -6,9 +6,10 @@
 		$datos = array("Nom","Cognoms","Despatx","Ubicacio","Telefon","Email","Imatge","IdDirectoriCategoria1","IdDirectoriCategoria2","IdDirectori", "Carrec", "Adreca", "Xarxes");
 		
 		$SQL = "SELECT * FROM Directori WHERE IdDirectori = ".$id;
-		$result = mysql_query($SQL,$oConn);
+		if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 		
-		while ($row = mysql_fetch_array($result)){ 
+		 while ($row = $result->fetch_assoc()){ 
 			foreach ($datos as $v){
 				$retorno[$v] =$row[$v];	
 			}

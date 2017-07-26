@@ -1,7 +1,10 @@
 
 function Cercador()
 {
+
+	//alert("entrol");
 	var texto = $("#TextCerca").val();
+
 	
 	//$("#ResultatCerca").html(texto);
 	

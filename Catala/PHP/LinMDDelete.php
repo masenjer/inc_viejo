@@ -4,15 +4,17 @@ include("../rao/sas_con.php");
 $IdLinMD = $_GET["IdLinMD"];
 
 $SQL = "SELECT * FROM LinMD WHERE IdLinMD = " . $IdLinMD;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$IdCap = $row["IdCapMenu"];
 }
 
 $SQL = "DELETE FROM LinMD WHERE IdLinMD = " . $IdLinMD; 
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 echo $IdCap;//."|".$IdLin;
 ?>

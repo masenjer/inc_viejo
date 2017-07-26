@@ -22,9 +22,10 @@ function MostraPublicacionsPrivatLlibres($txt,$tipus)
 	
 	//echo $SQL;
 	
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	
-	while ($row = mysql_fetch_array($result))
+	 while ($row = $result->fetch_assoc())
 	{
 		if ($row["Imatge"]) $IMG = '<img src="imgPublicacions/'.$row["Imatge"].'" style="width:51px; height:64px;">';
 		else $IMG = "";

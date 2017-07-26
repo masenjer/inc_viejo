@@ -19,12 +19,14 @@ if ($OldDoc != "")
 if ($id == "")
 {	 
 	$SQL = "INSERT INTO Destacat(FormatBoto,TipusEnllac, Imatge, URL, Orden, IdSite ) VALUES ($FB,$TE,'$IMG','$URL',0, ".$_SESSION["IdSite"]." )";
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	
 	$SQL = "SELECT IdDestacat FROM Destacat ORDER BY IdDestacat DESC LIMIT 1";
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	
-	while($row = mysql_fetch_array($result))
+	while ($row = $result->fetch_assoc())
 	{
 		$id = $row["IdDestacat"]; 	
 	}
@@ -39,7 +41,8 @@ else
 				URL = '$URL',
 				IdSite = ".$_SESSION["IdSite"]."			
 				WHERE IdDestacat = $id";
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 }
 
 echo $id;

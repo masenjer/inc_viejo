@@ -6,9 +6,10 @@ $name = $_GET["name"];
 $Orden = 0;
 
 $SQL = "SELECT Orden from IMGHome ORDER By Orden Desc LIMIT 1" ;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$Orden = $row["Orden"];
 }
@@ -16,12 +17,14 @@ while ($row = mysql_fetch_array($result))
 $Orden += 1;
 
 $SQL = "INSERT INTO IMGHome(Ruta, Orden) VALUES ('".$name."',$Orden)  ";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 $SQL = "Select IdIMGHome FROM IMGHome ORDER BY IdIMGHome DESC LIMIT 1";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$id = $row["IdIMGHome"];
 }

@@ -19,7 +19,8 @@ switch ($_SESSION["IdSite"]){
 }
 
 $SQL = "SELECT * FROM DirectoriCategoria order by Orden";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 $resultado = '
 <table width="100%" cellspacing="0" cellpadding="0" border="0"  style="border-style:solid;border-width:1px;border-color:#dddddd">
@@ -45,7 +46,7 @@ $resultado = '
 			
 
 
-while ($row = mysql_fetch_array($result))
+ while ($row = $result->fetch_assoc())
 {
 	
 	$resultado = $resultado . '
@@ -81,7 +82,7 @@ while ($row = mysql_fetch_array($result))
 
 }
 
-mysql_close($oConn);
+ 
 
 
 		

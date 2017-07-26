@@ -2,7 +2,7 @@
 function MostraGestioDestacats()
 {
 ?>
-<div id="DIVGestioDestacats" style=" position:fixed; top:0; left:0; width:100%; height:100%;  background:url(img/NegroTrans.png); display:none;">
+<div id="DIVGestioDestacats" style=" position:fixed; top:0; left:0; width:100%; height:100%;  background:url(img/NegroTrans.png); display:none; z-index:1000;">
 <input type="hidden" id="IdDestacat" />
 <input type="hidden" id="ColorBotoDestacat" value="#ff9900" />
 <input type="hidden" id="ColorTextDestacat" value="#ffffff" />

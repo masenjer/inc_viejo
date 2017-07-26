@@ -6,11 +6,11 @@ $sel = $_GET["sel"];
 
 
 $SQL = "SELECT * FROM CapMenu WHERE IdSite = ".$_SESSION["IdSite"]." order by Orden";
-$result = mysql_query($SQL,$oConn);
  
 $resultado = "<option value=0>----------------------------------</option>";
 
-while ($row = mysql_fetch_array($result)){
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+while ($row = $result->fetch_assoc()){
 	
 	
 	if ($row["IdCapMenu"] == $sel)
@@ -25,7 +25,6 @@ while ($row = mysql_fetch_array($result)){
 $resultado = $resultado.'<option value="Ocultes" style="background:#666; color: #FFF;">Ocultes</option>';
 
 
-mysql_close($oConn);
 echo $indice."|".$resultado;
 
 ?>

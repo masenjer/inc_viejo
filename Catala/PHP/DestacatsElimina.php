@@ -10,7 +10,8 @@ if ($IMG)
 }
 
 $SQL = "DELETE FROM Destacat WHERE IdDestacat =".$id;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 echo $id;
 ?>

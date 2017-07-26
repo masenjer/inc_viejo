@@ -9,11 +9,11 @@ $id = $_GET["id"];
 if ($id != "Ocultes") $SQL = "SELECT * FROM LinMenu WHERE IdSite = ".$_SESSION["IdSite"]." AND IdCapMenu = $id AND Tipus <> 2 order by Orden";
 else $SQL = "SELECT * FROM LinMenu WHERE IdSite = ".$_SESSION["IdSite"]." AND Tipus = 2 order by Orden";
 
-$result = mysql_query($SQL,$oConn);
  
 $resultado = "<option value=0>----------------------------------</option>";
 
-while ($row = mysql_fetch_array($result)){
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+while ($row = $result->fetch_assoc()){
 	
 	
 	if ($row["IdLinMenu"] == $sel1)
@@ -31,11 +31,9 @@ $resultado = $resultado."|<option value=0>----------------------------------</op
 if ($id != "Ocultes")
 {
 	$SQL = "SELECT * FROM LinMD WHERE IdCapMenu = $id order by Orden";
-	$result = mysql_query($SQL,$oConn);
-	 
 	
-	while ($row = mysql_fetch_array($result)){
-		
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+	while ($row = $result->fetch_assoc()){		
 		
 		if ($row["IdLinMD"] == $sel2)
 		{		
@@ -47,7 +45,6 @@ if ($id != "Ocultes")
 	}
 }
 
-mysql_close($oConn);
 echo $resultado;
 
 ?>

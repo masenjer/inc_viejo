@@ -21,7 +21,8 @@ $SQL = "
 			Revista	='".$Revista."' 
 	WHERE IdPublicacions = ".$id;
 
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 echo $SQL;
 ?>

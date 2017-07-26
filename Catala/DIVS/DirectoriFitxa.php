@@ -42,9 +42,9 @@ function MostraDirectoriFitxa()
 					
 					$SQL = "SELECT Perfil, Inves, Publi FROM Directori WHERE  IdDirectori = ".$_GET["id"];
 				
-					$result = mysql_query($SQL,$oConn);			
-					
-					while ($row = mysql_fetch_array($result)){
+					if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+					while ($row = $result->fetch_assoc()){
+
 						if ($_SESSION["Edicio"]=="1"){
 							CargaCuerpoAdminPestanyaDirectoriFitxa('Perfil', $row["Perfil"]); 
 							CargaCuerpoAdminPestanyaDirectoriFitxa('Inves', $row["Inves"]);

@@ -6,9 +6,10 @@ $id = $_GET["id"];
 $Orden = 0;
 
 $SQL = "SELECT Orden from LinMD WHERE IdCapMenu = " . $id . " ORDER By Orden Desc LIMIT 1" ;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$Orden = $row["Orden"] + 1;
 }
@@ -16,7 +17,8 @@ while ($row = mysql_fetch_array($result))
 
 
 $SQL = "INSERT INTO LinMD( Titol, Descripcio,  IdCapMenu,Orden) VALUES ('Nueva P&aacute;gina', 'Descripció', ".$id.",$Orden)  ";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 echo $id;
 ?>

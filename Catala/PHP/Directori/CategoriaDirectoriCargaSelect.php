@@ -15,11 +15,12 @@ function CategoriaDirectoriCargaSelect($idCat, $Conn){
 	}
 	
 	$SQL = "SELECT * FROM DirectoriCategoria ORDER BY Orden ";	
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 	$resultado[1] = '<option value=0"">----------------------------------</option>';
 	
-	while ($row = mysql_fetch_array($result))
+	 while ($row = $result->fetch_assoc())
 	{
 		if ($row["IdDirectoriCategoria"] == $idCat){
 			$resultado[0] = $row["Titol".$idioma];

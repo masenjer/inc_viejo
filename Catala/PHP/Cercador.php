@@ -61,8 +61,7 @@ $cond1 = "(" . $cond1 . ") AND CapMenu.IdSite = ".$_SESSION["IdSite"];
 $cond2 = "(" . $cond2 . ") AND LinMenu.IdSite = ".$_SESSION["IdSite"];
 //$cond3 = "(" . $cond3 . ") AND IdSite = ".$_SESSION["IdSite"];
 
-$SQL1 = "SELECT IdCapMenu, Titol FROM CapMenu WHERE " . $cond1;	
-$result1 = mysql_query($SQL1,$oConn);
+$SQL = "SELECT IdCapMenu, Titol FROM CapMenu WHERE " . $cond1;	
 
 echo '
 <table cellpadding="5" width="280px" bgcolor="#000000">
@@ -70,8 +69,9 @@ echo '
     	<td bgcolor="#FFFFFF">
 			<table cellpadding="0" cellspacing="0" border="0" class="fuenteCercador">';	
 
-while ($row = mysql_fetch_array($result1))
-{
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+while ($row = $result->fetch_assoc()){
+
 	////////Resultados del capMenu
 	echo '
 		<tr>
@@ -90,11 +90,10 @@ while ($row = mysql_fetch_array($result1))
 }
 
 
-$SQL2 = "SELECT CapMenu.IdCapMenu, LinMenu.IdLinMenu, LinMenu.Tipus, LinMenu.Titol as TitolL, CapMenu.Titol as TitolC, LinMenu.Contingut FROM CapMenu, LinMenu  WHERE CapMenu.IdCapMenu = LinMenu.IdCapMenu AND" . $cond2;	 
-$result2 = mysql_query($SQL2,$oConn);
+$SQL = "SELECT CapMenu.IdCapMenu, LinMenu.IdLinMenu, LinMenu.Tipus, LinMenu.Titol as TitolL, CapMenu.Titol as TitolC, LinMenu.Contingut FROM CapMenu, LinMenu  WHERE CapMenu.IdCapMenu = LinMenu.IdCapMenu AND" . $cond2;	 
 
-while ($row = mysql_fetch_array($result2))
-{
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+while ($row = $result->fetch_assoc()){
 	
 	
 	////////Resultados del LinMenu
@@ -151,9 +150,6 @@ while ($row = mysql_fetch_array($result2))
 //		</tr>	
 //	';
 //}
-mysql_free_result($result1);
-mysql_free_result($result2);
-mysql_close($oConn);
 
 echo '</table></td></tr></table>';	 
 }
@@ -181,7 +177,7 @@ function TrobaContingut($Contingut, $texto)
 	  }
 	  
 	  return "... ". $res . " ...";
-	  break;			
+	  //break;			
 	  
 		
 }

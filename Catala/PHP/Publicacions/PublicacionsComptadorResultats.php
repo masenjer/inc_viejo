@@ -14,9 +14,10 @@ function ComptadorResultatsPublicacions($cond, $tipus)
 	}	
 		
 	$SQL = "SELECT COUNT(*) AS Cuenta FROM Publicacions WHERE ".$cond.$tipus;	
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	
-	while ($row = mysql_fetch_array($result))
+	 while ($row = $result->fetch_assoc())
 	{
 		echo '<span class="fuenteTitolContingut">'.$row["Cuenta"].'</span><span class="fuenteContingut"> Registres relacionats amb la cerca</span>';	
 	}

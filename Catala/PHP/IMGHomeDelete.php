@@ -8,18 +8,20 @@ $orden = $_GET["orden"];
 unlink("../../IMGHomeDin/".$id.$ruta);
 
 $SQL = "DELETE FROM IMGHome WHERE IdIMGHome = ".$id;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 
 $SQL = "SELECT IdIMGHome, Orden FROM IMGHome WHERE Orden > ".$orden;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$nOrden = $row["Orden"] - 1;
 	
 	$SQL2 = "UPDATE IMGHome SET Orden = ".$nOrden." WHERE IdIMGHome = ".$row["IdIMGHome"];
-	$result2 = mysql_query($SQL2,$oConn);
+	if (!$result2 = $mysqli->query($SQL2))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
 
 }
 ?>

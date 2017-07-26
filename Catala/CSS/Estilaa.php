@@ -3,9 +3,10 @@
 	
 	include ("../rao/sas_con.php"); 
 	$SQL = "SELECT * FROM Web ";
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	 
-	while ($row = mysql_fetch_array($result)){
+	 while ($row = $result->fetch_assoc()){
 		$color = "#".$row["WebColor"];
 	}
 ?>
@@ -82,7 +83,7 @@ a
 .ButtonMS
 {
 	font-family:Verdana, Geneva, sans-serif;	
-	font-size:13px;
+	font-size:12px;
 	font-weight:bold;
 	color:#FFF;
 	vertical-align:middle;
@@ -111,14 +112,18 @@ a
 
 .ButtonMS a{
 	text-decoration:none;
-	color:#FFF;
-}
+	color:#FFF;}
 
 
 .DIVMenuS
 {
 	text-align:center;
 	cursor:pointer;	
+}
+
+.fuenteMS a{
+	text-decoration:none;
+	color:#FFF;
 }
 
 .ImageMS
@@ -133,8 +138,8 @@ a
 
 #ImageML
 {
-	width:18px;
-	height:18px;
+	width:16px;
+	height:16px;
 	border:0;
 	padding:0;
 	cursor:pointer;	
@@ -143,7 +148,7 @@ a
 .fuenteTitolML /* Titol Menu Esquerre */
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	font-weight:bold;
 	color:<?php echo $color; ?>;
 	background-color:#f3f3f3;
@@ -152,7 +157,7 @@ a
 .fuenteML
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	font-weight:bold;
 	color:#666;
 	cursor:pointer;
@@ -162,7 +167,7 @@ a
 .fuenteTitolML_Contrast /* Titol Menu Esquerre */
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:14px;	
+	font-size:13px;	
 	font-weight:bold;
 	color:<?php echo $color; ?>;
 }
@@ -170,7 +175,7 @@ a
 .fuenteML_Contrast
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	font-weight:bold;
 	color:#000;
 	cursor:pointer;
@@ -179,7 +184,7 @@ a
 .fuenteTitolMD /* Titol Menu Esquerre */
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	font-weight:bold;
 	background-color:<?php echo $color; ?>;
 	color:#FFF;
@@ -196,7 +201,7 @@ a
 .fuenteMD
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	color:#666;
 	background-color:#f3f3f3;
 
@@ -205,7 +210,7 @@ a
 .fuenteTitolContingut
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:14px;	
+	font-size:13px;	
 	font-weight:bold;
 	color:<?php echo $color; ?>;
 	text-align:left;
@@ -214,28 +219,28 @@ a
 .fuenteContingut
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	color:#666;
 }
 
 .fuenteContingut table
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	color:#666;
 }
 
 #DIVRutaPage
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:12px;	
+	font-size:11px;	
 	color:#999;
 }
 
 .fuenteCercador
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:12px;	
+	font-size:11px;	
 	color:#666;
 }
 
@@ -243,7 +248,7 @@ a
 .RutaCercador
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:11px;	
+	font-size:10px;	
 	color:<?php echo $color; ?>;
 	cursor:pointer;
 	font-weight:bold;
@@ -265,6 +270,7 @@ a
 	background-color:#C93
 }
 
+
 #TANoticia
 {
 	width:100%;
@@ -274,7 +280,7 @@ a
 .fuenteTituloGestionNoticias
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:14px;	
+	font-size:13px;	
 	font-weight:bold;
 	color:#000;
 }
@@ -282,7 +288,7 @@ a
 .fuenteGestionNoticia
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	color:#000;
 }
 
@@ -315,7 +321,7 @@ a
 .fuenteLinNoticia
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	color:#000;
 	cursor:pointer;
 }
@@ -351,7 +357,7 @@ a
 .LinNoticia
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	color:#666;
 	text-align:justify;
 }
@@ -380,7 +386,7 @@ a
 .CapGrid
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	font-weight:bold;	
 }
 
@@ -413,7 +419,7 @@ a
 .crd
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:12px;
+	font-size:11px;
 	font-weight:bold;
 	vertical-align:middle;
 	text-decoration:none;	
@@ -427,13 +433,6 @@ a
 /*--------------------------------------Maquetacio dura------------------------------------*/
 
 
-
-.PeuPagina
-{
-	background-image:URL(../img/PeuPagina.jpg);
-	height:144px;
-    background-size:100% 100%;
-}
 
 .TOTALOmbraSupEsq
 {
@@ -486,6 +485,15 @@ a
 	height:15px;
 	background-image:URL(../img/TOTALOmbraInfDreta.png)
 }
+
+
+.PeuPagina
+{
+	background-image:URL(../img/PeuPagina.jpg);
+	height:144px;
+    background-size:100% 100%;
+}
+
 
 .CapcaSuperiorPage
 {
@@ -604,7 +612,7 @@ filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 .fuenteEnDirHome
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	font-weight:bold;
 	color:#666;
 	cursor:pointer;
@@ -613,7 +621,7 @@ filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 .TitolContacteHome
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:12px;
+	font-size:11px;
 	color:#666;
 	font-weight:bold;	
 }
@@ -621,7 +629,7 @@ filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 .fuenteContacteHome
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:11px;	
+	font-size:10px;	
 	color:#666;
 	text-align:left;
 }
@@ -629,7 +637,7 @@ filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 .InfoContacteHome
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:11px;	
+	font-size:10px;	
 	color:#666;
 	font-weight:bold;
 	cursor:pointer;
@@ -643,7 +651,7 @@ filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 .TitolMapaWeb
 {
 	font-family:Verdana, Geneva, sans-serif;	
-	font-size:13px;
+	font-size:12px;
 	font-weight:bold;
 	color:#FFF;
 	vertical-align:middle;
@@ -655,10 +663,11 @@ filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 	background-color:<?php echo $color; ?>;
 	height:25px;
 }
+
 .fuenteMapaWeb
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	color:#666;
 	cursor:pointer;
 }
@@ -666,7 +675,7 @@ filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 a:link.OpcionsContingut
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	text-decoration:none;
 	color:#444;
 	text-height:13px;
@@ -675,7 +684,7 @@ a:link.OpcionsContingut
 a:visited.OpcionsContingut
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:13px;	
+	font-size:12px;	
 	text-decoration:none;
 	color:#444;
 	text-height:13px;
@@ -704,7 +713,7 @@ a:visited.OpcionsContingut
 .InfoColor{
 	color:#ffffff;
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:11;
+	font-size:10;
 	padding:5px;
 }
 
@@ -741,11 +750,10 @@ a:visited.OpcionsContingut
 	height:56px;
 }
 
-
 .fuenteInfoDROW
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:14px;	
+	font-size:13px;	
 	color:#FFF;
 	font-weight:bold;
 	padding-left:28px;
@@ -755,7 +763,6 @@ a:visited.OpcionsContingut
 	background-image:URL(../img/FonsTitolDROW.png);
 
 }
-
 
 .PertanyUAB_0
 {
@@ -794,9 +801,7 @@ a:visited.OpcionsContingut
 	background-image:URL(../img/TancarForm.jpg);
 	cursor:pointer;
 		
-}
-
-/* CSS Document */
+}/* CSS Document */
 
 .fuenteForm
 {
@@ -892,7 +897,7 @@ input
 .fontPeuPagina
 {
 	font-family:Verdana, Geneva, sans-serif;
-	font-size:12px;
+	font-size:11px;
 	text-decoration:none;
 	color:#FFF;
 }

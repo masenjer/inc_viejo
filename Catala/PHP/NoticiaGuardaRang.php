@@ -10,7 +10,8 @@ if (CS())
 	if (!$r) $r = "NULL";
 	
 	$SQL = "UPDATE Noticias SET Rang = ".$r." WHERE IdNoticia =" . $id;
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	
 	echo $SQL;
 }

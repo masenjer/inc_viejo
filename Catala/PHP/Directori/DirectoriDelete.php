@@ -5,9 +5,10 @@ include("../../rao/PonQuita.php");
 $id = Pon($_POST["id"]);
 
 $SQL = "SELECT Imatge FROM Directori WHERE IdDirectori = ".$id;	
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	if(file_exists("../../../imgDirectori/".$row["Imatge"])) unlink("../../../imgDirectori/".$row["Imatge"]);
 }
@@ -15,7 +16,8 @@ while ($row = mysql_fetch_array($result))
 
 $SQL = "DELETE FROM Directori WHERE IdDirectori = ".$id;
 
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 
 ?>

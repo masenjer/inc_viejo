@@ -10,11 +10,11 @@ $TE = $_GET["TE"];
 $URL = $_GET["URL"];
 
 $SQL = "SELECT COUNT(*) as Cuenta from Contacte WHERE  IdSite =".$_SESSION["IdSite"]." ";
-$result = mysql_query($SQL,$oConn);
 
 $Cuenta = "";
 
-while ($row = mysql_fetch_array($result))
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+while ($row = $result->fetch_assoc()){
 {	
 	$Cuenta = $row["Cuenta"];	
 }
@@ -28,6 +28,6 @@ if ($Cuenta!="0")
 			WHERE IdSite = ".$_SESSION["IdSite"];
 else $SQL = "INSERT INTO Contacte (Titol, Contingut, URL, IdSite) VALUES ('$Titol','$TE','$URL', ".$_SESSION["IdSite"].")";							
 
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
 
 ?>

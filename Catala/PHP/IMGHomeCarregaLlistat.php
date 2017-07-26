@@ -3,11 +3,12 @@ include("../rao/sas_con.php");
 
 
 $SQL = "Select * FROM IMGHome ORDER BY Orden ASC ";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 $mida = 0;
 
-while ($row = mysql_fetch_array($result))
+ while ($row = $result->fetch_assoc())
 {
 	$mida ++;
 	

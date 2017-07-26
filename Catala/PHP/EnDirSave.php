@@ -11,9 +11,10 @@ $URL = $_GET["URL"];
 $Orden = 0;
 
 $SQL = "SELECT Orden from EnDirHome ORDER By Orden Desc LIMIT 1" ;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$Orden = $row["Orden"] + 1;
 }
@@ -23,12 +24,14 @@ while ($row = mysql_fetch_array($result))
 if ($id == "")
 {	
   $SQL = "INSERT INTO EnDirHome (Titol, TipusEnllac, URL,Orden, IdSite ) VALUES ('$Titol',$TE,'$URL',$Orden,".$_SESSION["IdSite"].")";
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	
 	$SQL = "SELECT IdEnDirHome FROM EnDirHome ORDER BY IdEnDirHome DESC LIMIT 1";
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 	
-	while($row = mysql_fetch_array($result))
+	while ($row = $result->fetch_assoc())
 	{
 		$id = $row["IdEnDirHome"]; 	
 	}
@@ -42,7 +45,8 @@ else
 				URL = '$URL',
 				IdSite = ".$_SESSION["IdSite"]."				
 				WHERE IdEnDirHome = $id";
-	$result = mysql_query($SQL,$oConn);
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 }
 
 echo $id;

@@ -12,6 +12,7 @@ function ComprovaLogin()
 
 function LlegadaComprovaLogin(data)
 {
+	//console.log(data);
 	$("#loginAdmin").submit();
 }
 

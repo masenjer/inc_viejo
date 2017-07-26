@@ -26,7 +26,7 @@ class News {
 		
 		if(!$result = mysql_query($SQL,$oConn)) die (mysql_error($oConn)) ;		
 		
-		while ($row = mysql_fetch_array($result)){
+		 while ($row = $result->fetch_assoc()){
 			$resultado = '
 				<div id="DIVLlistatNoticies" class="NewsLlistat">
 					'.$row["Titol"].'

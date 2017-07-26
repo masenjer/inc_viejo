@@ -3,9 +3,10 @@ include("../rao/sas_con.php");
 
 
 $SQL = "SELECT Orden from IMGHome ORDER By Orden Desc LIMIT 1" ;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$MAXOrden = $row["Orden"];
 }
@@ -13,13 +14,14 @@ while ($row = mysql_fetch_array($result))
 $primer = false;
 
 $SQL = "Select * FROM IMGHome ORDER BY Orden ASC ";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 echo '
 <table cellspacing="5" cellpadding="0" border="0">
 	<tr>'; 
  
-while ($row = mysql_fetch_array($result))
+ while ($row = $result->fetch_assoc())
 {
 	if ($primer) $left='
 		<h3><span class="glyphicon  glyphicon-circle-arrow-left " aria-hidden="true" onclick="MoveIMGHome('.$row["IdIMGHome"].','.$row["Orden"].',0);"></span></h3>';

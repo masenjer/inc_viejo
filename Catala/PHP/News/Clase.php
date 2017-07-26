@@ -31,7 +31,7 @@ class News {
 		
 		if(!$result = mysql_query($SQL,$oConn)) die (mysql_error($oConn)) ;		
 				
-		while ($row = mysql_fetch_array($result)){
+		 while ($row = $result->fetch_assoc()){
 			echo $entro;
 			if ($idN == $row["IdNoticia"]) $Style = "NewsLlistat_SEL";
 			else $Style = "NewsLlistat";
@@ -53,7 +53,7 @@ class News {
 		$SQL = "SELECT * FROM Noticias WHERE IdNoticia = ".$idN." AND IdSite = ".$_SESSION["IdSite"];
 		if(!$result = mysql_query($SQL,$oConn)) die (mysql_error($oConn)) ;		
 
-		while ($row = mysql_fetch_array($result)){
+		 while ($row = $result->fetch_assoc()){
 			return '
 				<div class="TitolTextDossierNoticies">'.$row["Titol"].'</div>
 				<div class="TextDossierNoticies">'.$row["Cos"].'</div>

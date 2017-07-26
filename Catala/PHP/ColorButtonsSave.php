@@ -5,7 +5,7 @@ include("../rao/PonQuita.php");
 $color = $_GET["color"];
 
 $SQL = "UPDATE Web SET ButtonsColor = '".$color."'";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
 
 //echo $SQL;
 echo $color;// $contingut;//."|".$IdLin;

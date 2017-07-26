@@ -25,11 +25,13 @@ if (verifyTimedHash($a[1],$_SESSION["dsalkdjfkaldjfkldasjfkadjfkjdasf"],$a[0],5)
 	$aux = 0;
 	
 	$SQL = "SELECT * FROM Users where User = '".$u. "' AND Password = '". $p."'"; 
-	$result = mysql_query($SQL,$oConn);
-	echo $SQL;
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+	
+	//echo $SQL;
+	
 	session_set_cookie_params(0, "/", $_SERVER["HTTP_HOST"], 0); 
 	
-	while ($row = mysql_fetch_array($result))
+	while ($row = $result->fetch_assoc())
 	{
 		$aux = 1;
 		
@@ -39,14 +41,14 @@ if (verifyTimedHash($a[1],$_SESSION["dsalkdjfkaldjfkldasjfkadjfkjdasf"],$a[0],5)
 		$_SESSION["Usuarios"] = $row["Usuarios"];
 		
 		$SQL2 = "UPDATE Users SET P='".$_SESSION["dsalkdjfkaldjfkldasjfkadjfkjdasf"]."' WHERE IdUser = ".$row["IdUser"];
-		$result2 = mysql_query($SQL2,$oConn);
+		if (!$result2 = $mysqli->query($SQL2))printf("Errormessage: %s\n", mysqli_error($mysqli));
 		
-		echo $SQL2;
+		//echo $SQL2;
 		
 		$_SESSION["dsalkdjfkaldjfkldasjfkadjfkjdasf"] = $row["IdUser"]."|".$_SESSION["dsalkdjfkaldjfkldasjfkadjfkjdasf"];
 	}
 	
-	mysql_close($oConn);
+	// 
 	
 }
 

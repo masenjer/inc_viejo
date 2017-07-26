@@ -18,7 +18,7 @@ switch($_POST["op"])
 
 
 
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
 
 echo $id ."|". $_POST["op"];// $contingut;//."|".$IdLin;
 ?>

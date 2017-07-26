@@ -46,9 +46,9 @@ function MostraDirectoriPrivat($txt, $Conn, $idC)
 	
 	//$resFin .= $SQL;
 	
-	if (!$result = mysql_query($SQL,$oConn)) die ("Error: ".mysql_error($oConn));
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
 	
-	while ($row = mysql_fetch_array($result))
+	 while ($row = $result->fetch_assoc())
 	{
 		if (!$idC || $idC == $row["IdDirectoriCategoria"]){
 			
@@ -138,7 +138,7 @@ function MostraDirectoriPrivat($txt, $Conn, $idC)
 	$resFin .='
 		</table>|';
 	
-	$num_filas = mysql_num_rows($result);
+	$num_filas = $result->num_rows;
 	
 	$resFin .= ComptadorResultatsDirectori($num_filas);
 	

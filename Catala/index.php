@@ -16,7 +16,7 @@ $_SESSION["IdSite"] = 0;
 <?php include("Includes/IncludesJS.php");?>
 </head>
 
-<body onLoad="CarregaPagina()" class="FondoBody">
+<body onLoad="CarregaPagina()" class="FondoBody"  onClick="$('#ResultatCerca').hide('slow')">
 <?php // include "AvisoCookies.php"; ?>
 <?php include_once("../analyticstracking.php") ?>
 

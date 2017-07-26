@@ -19,7 +19,8 @@ $titol = $_GET["titol"];
 $titol2 = Pon($titol);
 
 $SQL = "UPDATE DirectoriCategoria SET Titol".$idioma." = '".$titol2."' WHERE IdDirectoriCategoria =" . $id;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 
 echo $id."|".Quita($titol);

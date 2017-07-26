@@ -13,9 +13,10 @@ $idCat = $_POST["IdCat"];
 $cuenta = 0;
 
 $SQL = "SELECT COUNT(*) as Cuenta FROM Directori WHERE IdDirectoriCategoria = ".$idCat;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result)){
+
+ while ($row = $result->fetch_assoc()){
 	$cuenta = $row["Cuenta"];	
 }
 

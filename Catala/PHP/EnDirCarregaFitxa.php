@@ -4,16 +4,17 @@ include("../rao/sas_con.php");
 $id = $_GET["id"];
 
 $SQL = "SELECT * FROM EnDirHome WHERE IdEnDirHome = ".$id;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$Titol = $row["Titol"];
 	$TE = $row["TipusEnllac"];
 	$URL = $row["URL"];
 }
 
-mysql_close($oConn);
+ 
 
 echo $Titol."*****".$TE."*****".$URL."*****".$id;
 

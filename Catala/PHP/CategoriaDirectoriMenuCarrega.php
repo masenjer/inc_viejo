@@ -17,7 +17,6 @@ switch ($_SESSIOM["IdSite"]){
 }
 
 $SQL = "SELECT * FROM DirectoriCategoria order by Orden";
-$result = mysql_query($SQL,$oConn);
 
 $resultado = '
 <table width="100%" cellspacing="0" cellpadding="0" border="0"  style="border-style:solid;border-width:1px;border-color:#dddddd">
@@ -33,8 +32,9 @@ $resultado = '
 			</table>
 			<table width="100%"  cellpadding="0" cellspacing="0" border="0" class="fuenteML" id="fuenteML">';
 
-while ($row = mysql_fetch_array($result))
-{
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+while ($row = $result->fetch_assoc()){
+
 	if ($_SESSION["Creacio"]=="1")
 	{
 		$DobleClic = 'ondblclick="EditaTitolCategoriaDirectori('.$row["IdDirectoriCategoria"].')"';	
@@ -69,7 +69,6 @@ while ($row = mysql_fetch_array($result))
 
 }
 
-mysql_close($oConn);
 
 
 		

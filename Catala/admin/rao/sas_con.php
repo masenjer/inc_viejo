@@ -1,6 +1,14 @@
 <?php	
-	$oConn = mysql_connect("agullat.uab.es:3306", "medtrop", "crfm4055");
-	mysql_select_db("c1110459_medtrop",$oConn) OR DIE (mysql_error());
-	
-	mysql_query("SET NAMES utf8");
+
+$mysqli = new mysqli("localhost", "inc", "secreto", "inc_gestor");
+
+/* check connection */
+if (mysqli_connect_errno()) {
+    printf("Error de conexión: %s\n", mysqli_connect_error());
+    exit();
+}
+
+
+$mysqli->set_charset('latin1');
+//$mysqli->query("SET collation_connection = utf8_latin1");
 ?>

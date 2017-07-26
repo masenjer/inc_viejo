@@ -23,9 +23,10 @@ $resultado = '
 ';
 
 $SQL = "SELECT L.* FROM LinMenu L, CapMenu C WHERE C.IdCapMenu = L.IdCapMenu AND C.IdSite = 0";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$titol = str_replace(" ","-",$row["Titol"]);
 
@@ -39,9 +40,10 @@ while ($row = mysql_fetch_array($result))
 }
 
 $SQL = "SELECT * FROM LinMD";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
 
-while ($row = mysql_fetch_array($result))
+
+ while ($row = $result->fetch_assoc())
 {
 	$titol = str_replace(" ","-",$row["Titol"]);
 	
@@ -54,7 +56,7 @@ while ($row = mysql_fetch_array($result))
 	';
 }
 
-mysql_close($oConn);
+ 
 
 
 $resultado.="  </urlset>";

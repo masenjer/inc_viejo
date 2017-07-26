@@ -7,7 +7,8 @@ $titol = $_GET["titol"];
 $titol2 = Pon($titol);
 
 $SQL = "UPDATE LinMenu SET Titol = '".$titol2."' WHERE IdLinMenu =" . $id;
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 echo $id."|".Quita($titol);
 ?>

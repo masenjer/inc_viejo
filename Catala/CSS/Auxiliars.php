@@ -3,9 +3,10 @@
 	
 	include ("../rao/sas_con.php"); 
 	$SQL = "SELECT * FROM Web ";
-	$result = mysql_query($SQL,$oConn);
-	 
-	while ($row = mysql_fetch_array($result)){
+	
+	if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli)); 
+	while ($row = $result->fetch_assoc()){
+
 		$color = "#".$row["WebColor"];
 	}
 ?>
@@ -239,5 +240,15 @@
 	height:19px;
 	width:18px;
 	border-right: 1px #aaa solid;
+}
+
+#ResultatCerca{
+	position: absolute; 
+	width: 500px; 
+	height: 90%; 
+	overflow: auto; 
+	z-index: 1000; 
+	display: none; 
+	margin-top:30px;
 }
 

@@ -10,7 +10,8 @@ $Linies = Pon($_POST["Linies"]);
 $Revista = Pon($_POST["Revista"]);
 
 $SQL = "INSERT INTO Publicacions(Tipus, Autor, Titol, Any, Linies, Revista) VALUES (".$Tipus.",'".$Autor."','".$Titol."','".$Any."','".$Linies."','".$Revista."')  ";
-$result = mysql_query($SQL,$oConn);
+if (!$result = $mysqli->query($SQL))printf("Errormessage: %s\n", mysqli_error($mysqli));
+
 
 echo $SQL;
 ?>
